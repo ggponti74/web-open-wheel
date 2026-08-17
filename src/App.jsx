@@ -1,3 +1,5 @@
+const VERSION = "1.0.0";
+
 import { useState } from 'preact/hooks';
 import { SeriesPage } from './pages/SeriesPage.jsx';
 import { SeriesNav } from './components/SeriesNav.jsx';
