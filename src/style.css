@@ -7,13 +7,29 @@
   --accent: #e10600; /* neutral-ish motorsport red, used sparingly */
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: #e0e0e2;
+    --text: #17171a;
+    --text-muted: #6b6b72;
+    --accent: #d1001f;
+  }
+}
+
 * { box-sizing: border-box; }
+
+html {
+  font-size: 18px;
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light dark;
 }
 
 .app-shell {
@@ -24,18 +40,19 @@ body {
 
 .app-content {
   flex: 1;
-  padding: 16px 16px calc(112px + env(safe-area-inset-bottom));
+  padding: 16px 16px calc(120px + env(safe-area-inset-bottom));
   /* bottom padding clears both fixed nav bars */
 }
 
 .series-page h1 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 8px 0 4px;
 }
 
 .series-page__placeholder {
   color: var(--text-muted);
   text-transform: capitalize;
+  font-size: 1.5rem;
 }
 
 /* --- Shared nav bar styling --- */
@@ -55,7 +72,7 @@ body {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   padding: 10px 4px;
   cursor: pointer;
 }
@@ -68,13 +85,13 @@ body {
 
 /* Category nav sits above the series nav */
 .category-nav {
-  bottom: calc(56px + env(safe-area-inset-bottom));
+  bottom: calc(60px + env(safe-area-inset-bottom));
   height: 48px;
 }
 
 /* Series nav is the bottom-most bar */
 .series-nav {
   bottom: 0;
-  height: 56px;
+  height: 60px;
   padding-bottom: env(safe-area-inset-bottom);
 }
