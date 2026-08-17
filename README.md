@@ -1,3 +1,7 @@
+<https://ggponti74.github.io/web-open-wheel/>
+
+Made with Claude
+
 # Motorsport Dashboard
 
 A PWA showing driver/team standings, next race, and news for F1, F2, F3,
