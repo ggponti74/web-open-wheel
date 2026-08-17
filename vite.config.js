@@ -3,6 +3,7 @@ import preact from '@preact/preset-vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/web-open-wheel/',
   plugins: [
     preact(),
     VitePWA({
@@ -15,7 +16,8 @@ export default defineConfig({
         theme_color: '#0f0f0f',
         background_color: '#0f0f0f',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/web-open-wheel/',
+scope: '/web-open-wheel/',
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' }
