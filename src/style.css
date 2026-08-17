@@ -66,13 +66,22 @@ body {
   border-top: 1px solid var(--border);
 }
 
-.category-nav button,
+.category-nav button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 10px 4px;
+  cursor: pointer;
+} 
+
 .series-nav button {
   flex: 1;
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 10px 4px;
   cursor: pointer;
 }
