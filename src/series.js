@@ -6,17 +6,17 @@
 export const SERIES = [
   {
     id: 'f1',
-    label: 'F1',
+    label: 'Formula 1',
     teamsLabel: 'Teams',
   },
   {
     id: 'f2',
-    label: 'F2',
+    label: 'Formula 2',
     teamsLabel: 'Teams',
   },
   {
     id: 'f3',
-    label: 'F3',
+    label: 'Formula 3',
     teamsLabel: 'Teams',
   },
   {
@@ -32,10 +32,10 @@ export const SERIES = [
 ];
 
 export const CATEGORIES = [
+  { id: 'news', label: 'News' },
+  { id: 'next-race', label: 'Next Race' },
   { id: 'drivers', label: 'Drivers' },
   { id: 'teams', label: 'Teams' }, // label overridden per-series via teamsLabel
-  { id: 'next-race', label: 'Next Race' },
-  { id: 'news', label: 'News' },
 ];
 
 export function getSeries(id) {

@@ -1,4 +1,4 @@
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 import { useState } from 'preact/hooks';
 import { SeriesPage } from './pages/SeriesPage.jsx';
