@@ -10,7 +10,7 @@ import { SERIES } from './series.js';
 // so switching series and switching back doesn't reset your place.
 const defaultCategoryBySeries = Object.fromEntries(
   SERIES.map((s) => [s.id, 'drivers']), 
-  CATEGORIES.map((s)) => [s.id, 'categories']) 
+  CATEGORIES.map((s)) => [s.id, 'label']) 
 );
 
 const categoryLabel = series.id === 'teams' ? series.teamsLabel : series.label;
