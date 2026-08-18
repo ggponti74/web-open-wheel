@@ -6,6 +6,7 @@ import { FileBackedCategory } from '../components/FileBackedCategory.jsx';
 
 export function SeriesPage({ seriesId, categoryId }) {
   const series = getSeries(seriesId);
+  const categoryLabel = c.id === 'teams' ? series.teamsLabel : c.label;
 
   if (seriesId === 'f1') {
     if (categoryId === 'drivers') return <DriverStandings />;
@@ -14,9 +15,9 @@ export function SeriesPage({ seriesId, categoryId }) {
     // f1 news also goes through the file-backed path below
   }
 
-  return (
+  return (    
     <div class="series-page">
-      <h1>{series.label}</h1>
+      <h1>{categoryLabel}</h1>
       <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
     </div>
   );
