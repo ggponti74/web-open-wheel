@@ -30,7 +30,7 @@ export function SeriesPage({ seriesId, categoryId }) {
     return (    
       <div class="series-page">
         <h1>{categoryLabel}</h1>
-        <FileBackedCategory<TeamStandings />;
+        <TeamStandings />;
       </div>
     );
     
