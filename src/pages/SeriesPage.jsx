@@ -10,28 +10,29 @@ export function SeriesPage({ seriesId, categoryId }) {
 
   if (seriesId === 'f1') {
     
-    if (categoryId === 'next-race') return (    
-      <div class="series-page">
-        <h1>{categoryLabel}</h1>
-        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
-      </div>
-    );
+    if (categoryId === 'next-race') return <NextRace />;
+    //   return (    
+    //   <div class="series-page">
+    //     <h1>{categoryLabel}</h1>
+    //     <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+    //   </div>
+    // );
 
-    if (categoryId === 'drivers') //return <DriverStandings />;
-    return (    
-      <div class="series-page">
-        <h1>{categoryLabel}</h1>
-        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
-      </div>
-    );
+    if (categoryId === 'drivers') return <DriverStandings />;
+    // return (    
+    //   <div class="series-page">
+    //     <h1>{categoryLabel}</h1>
+    //     <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+    //   </div>
+    // );
 
-    if (categoryId === 'teams') --return <TeamStandings />;
-    return (    
-      <div class="series-page">
-        <h1>{categoryLabel}</h1>
-        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
-      </div>
-    );
+    if (categoryId === 'teams') return <TeamStandings />;
+    // return (    
+    //   <div class="series-page">
+    //     <h1>{categoryLabel}</h1>
+    //     <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+    //   </div>
+    // );
     
     // f1 news also goes through the file-backed path below
   }
