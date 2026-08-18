@@ -9,9 +9,30 @@ export function SeriesPage({ seriesId, categoryId }) {
   const categoryLabel = c.id === 'teams' ? series.teamsLabel : c.label;
 
   if (seriesId === 'f1') {
-    if (categoryId === 'drivers') return <DriverStandings />;
-    if (categoryId === 'teams') return <TeamStandings />;
-    if (categoryId === 'next-race') return <NextRace />;
+    
+    if (categoryId === 'next-race') return (    
+      <div class="series-page">
+        <h1>{categoryLabel}</h1>
+        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+      </div>
+    );
+
+    if (categoryId === 'drivers') //return <DriverStandings />;
+    return (    
+      <div class="series-page">
+        <h1>{categoryLabel}</h1>
+        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+      </div>
+    );
+
+    if (categoryId === 'teams') --return <TeamStandings />;
+    return (    
+      <div class="series-page">
+        <h1>{categoryLabel}</h1>
+        <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
+      </div>
+    );
+    
     // f1 news also goes through the file-backed path below
   }
 
