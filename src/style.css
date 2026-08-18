@@ -124,6 +124,10 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+.standings-list__item:nth-child(even) {
+  background: var(--surface);
+}
+
 .standings-list__pos {
   width: 28px;
   color: var(--text-muted);
@@ -157,6 +161,10 @@ body {
 .news-list__item {
   padding: 12px 4px;
   border-bottom: 1px solid var(--border);
+}
+
+.news-list__item:nth-child(even) {
+  background: var(--surface);
 }
 
 .news-list__item a {
