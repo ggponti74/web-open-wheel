@@ -6,7 +6,7 @@ import { FileBackedCategory } from '../components/FileBackedCategory.jsx';
 
 export function SeriesPage({ seriesId, categoryId }) {
   const series = getSeries(seriesId);
-  const categoryLabel = c.id === 'teams' ? series.teamsLabel : c.label;
+  const categoryLabel = series.id === 'teams' ? series.teamsLabel : series.label;
 
   if (seriesId === 'f1') {
     
