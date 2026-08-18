@@ -9,10 +9,11 @@ import { SERIES } from './series.js';
 // Remembers, per series, which category tab you were last on
 // so switching series and switching back doesn't reset your place.
 const defaultCategoryBySeries = Object.fromEntries(
-  SERIES.map((s) => [s.id, 'drivers'])
+  SERIES.map((s) => [s.id, 'drivers']), 
+  CATEGORIES.map((s)) => [s.id, 'categories']) 
 );
 
-  const categoryLabel = series.id === 'teams' ? series.teamsLabel : series.label;
+const categoryLabel = series.id === 'teams' ? series.teamsLabel : series.label;
 
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
