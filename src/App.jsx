@@ -12,6 +12,8 @@ const defaultCategoryBySeries = Object.fromEntries(
   SERIES.map((s) => [s.id, 'drivers'])
 );
 
+  const categoryLabel = series.id === 'teams' ? series.teamsLabel : series.label;
+
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
   const [categoryBySeries, setCategoryBySeries] = useState(defaultCategoryBySeries);
