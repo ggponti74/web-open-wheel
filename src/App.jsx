@@ -47,7 +47,7 @@ export function App() {
         goToCategory(-1); // swiped right → previous category
       }
     }
-alert(delta) ;
+alert(touchStartX.current +":" +touchStartY.current) ;
     touchStartX.current = null;
     touchStartY.current = null;
   }
