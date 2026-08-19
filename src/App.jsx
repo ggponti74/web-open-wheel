@@ -1,4 +1,4 @@
-const VERSION = "1.0.5";
+ const VERSION = "1.0.5";
 
 import { useRef } from 'preact/hooks';
 import { useState } from 'preact/hooks';
@@ -30,6 +30,7 @@ export function App() {
   function handleTouchStart(e) {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
+alert("touch start");
   }
 
   function handleTouchEnd(e) {
@@ -50,6 +51,7 @@ export function App() {
 
     touchStartX.current = null;
     touchStartY.current = null;
+alert("touch end") ;
   }
 
   return (
