@@ -2,6 +2,7 @@ const VERSION = "1.0.5";
 
 import { useRef } from 'preact/hooks';
 import { useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import { SeriesPage } from './pages/SeriesPage.jsx';
 import { SeriesNav } from './components/SeriesNav.jsx';
 import { CategoryNav } from './components/CategoryNav.jsx';
