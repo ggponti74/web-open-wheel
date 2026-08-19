@@ -72,6 +72,7 @@ export function App() {
 }
 
 function goToCategory(direction) {
+alert(direction) ;
   const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
   const newIndex = index + direction; // direction is +1 or -1
 
@@ -79,5 +80,4 @@ function goToCategory(direction) {
   // or, to wrap instead of clamp:
   // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
 alert("swiped") ;
-  selectCategory(CATEGORIES[newIndex].id);
 }
