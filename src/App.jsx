@@ -50,7 +50,6 @@ export function App() {
 
     touchStartX.current = null;
     touchStartY.current = null;
-alert("touch end") ;
   }
 
   return (
@@ -79,6 +78,6 @@ function goToCategory(direction) {
   if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
   // or, to wrap instead of clamp:
   // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
-
+alert("swiped") ;
   selectCategory(CATEGORIES[newIndex].id);
 }
