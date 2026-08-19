@@ -30,7 +30,6 @@ export function App() {
   function handleTouchStart(e) {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
-alert("touch start");
   }
 
   function handleTouchEnd(e) {
