@@ -7,7 +7,7 @@ import { CategoryNav } from './components/CategoryNav.jsx';
 import { SERIES } from './series.js';
 
 const defaultCategoryBySeries = Object.fromEntries(
-  SERIES.map((s) => [s.id, 'drivers'])
+  SERIES.map((s) => [s.id, 'news'])
 );
 
 export function App() {
