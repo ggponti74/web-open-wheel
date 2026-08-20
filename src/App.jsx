@@ -1,4 +1,4 @@
-const VERSION = "1.0.6";
+const VERSION = "1.0.__BUILD_VERSION__";
 
 import { useRef } from "preact/hooks";
 import { useState } from "preact/hooks";
@@ -77,12 +77,12 @@ export function App() {
 }
 
 function goToCategory(direction) {
-alert(direction) ;
+
   const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
   const newIndex = index + direction; // direction is +1 or -1
 
   if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
   // or, to wrap instead of clamp:
   // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
-alert("swiped") ;
+
 }
