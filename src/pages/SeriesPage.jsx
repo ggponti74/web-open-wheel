@@ -22,7 +22,7 @@ export function SeriesPage({ seriesId, categoryId }) {
     return (    
       <div class="series-page">
         <h1>{categoryLabel}</h1>
-         <DriverStandings />;
+         <DriverStandings />
       </div>
     );
 
@@ -30,7 +30,7 @@ export function SeriesPage({ seriesId, categoryId }) {
     return (    
       <div class="series-page">
         <h1>{categoryLabel}</h1>
-        <TeamStandings />;
+        <TeamStandings />
       </div>
     );
     
