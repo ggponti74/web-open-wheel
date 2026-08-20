@@ -1,4 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
-    "github-actions.workflows.pinned.workflows": []
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/deploy.yml"
+    ]
 }
