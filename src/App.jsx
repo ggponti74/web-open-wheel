@@ -1,21 +1,23 @@
-const VERSION = "1.0.5";
+const VERSION = "1.0.6";
 
-import { useRef } from 'preact/hooks';
-import { useState } from 'preact/hooks';
-import { useEffect } from 'preact/hooks';
-import { SeriesPage } from './pages/SeriesPage.jsx';
-import { SeriesNav } from './components/SeriesNav.jsx';
-import { CategoryNav } from './components/CategoryNav.jsx';
-import { SERIES } from './series.js';
-import { CATEGORIES } from './series.js';
+import { useRef } from "preact/hooks";
+import { useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
+import { SeriesPage } from "./pages/SeriesPage.jsx";
+import { SeriesNav } from "./components/SeriesNav.jsx";
+import { CategoryNav } from "./components/CategoryNav.jsx";
+import { SERIES } from "./series.js";
+import { CATEGORIES } from "./series.js";
 
 const defaultCategoryBySeries = Object.fromEntries(
-  SERIES.map((s) => [s.id, 'news'])
+  SERIES.map((s) => [s.id, "news"]),
 );
 
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
-  const [categoryBySeries, setCategoryBySeries] = useState(defaultCategoryBySeries);
+  const [categoryBySeries, setCategoryBySeries] = useState(
+    defaultCategoryBySeries,
+  );
 
   const currentCategory = categoryBySeries[currentSeries];
 
@@ -39,6 +41,8 @@ export function App() {
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
     const threshold = 50; // min px to count as an intentional swipe
 
+    alert( touchStartX.current + ":" + touchStartY.current );
+
     // ignore if the gesture was more vertical than horizontal (likely a scroll)
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
       if (deltaX < 0) {
@@ -54,7 +58,11 @@ export function App() {
 
   return (
     <div class="app-shell">
-      <main class="app-content" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+      <main
+        class="app-content"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <SeriesPage seriesId={currentSeries} categoryId={currentCategory} />
       </main>
 
@@ -63,10 +71,7 @@ export function App() {
         activeCategory={currentCategory}
         onSelect={selectCategory}
       />
-      <SeriesNav
-        activeSeries={currentSeries}
-        onSelect={setCurrentSeries}
-      />
+      <SeriesNav activeSeries={currentSeries} onSelect={setCurrentSeries} />
     </div>
   );
 }
