@@ -51,7 +51,7 @@ export function App() {
         goToCategory(-1); // swiped right → previous category
       }
     }
-
+alert(touchStartX.current +":" +touchStartY.current) ;
     touchStartX.current = null;
     touchStartY.current = null;
   }
@@ -77,12 +77,12 @@ export function App() {
 }
 
 function goToCategory(direction) {
+alert(direction) ;
   const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
   const newIndex = index + direction; // direction is +1 or -1
 
   if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
   // or, to wrap instead of clamp:
   // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
-
-  selectCategory(CATEGORIES[newIndex].id);
+alert("swiped") ;
 }
