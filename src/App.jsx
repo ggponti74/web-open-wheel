@@ -50,7 +50,7 @@ export function App() {
       }
     }
     
-    alert(touchStartX.current + " : " + touchStartY.current + ", " + deltaX + " : " + deltaY) ;
+    alert(Math.abs(touchStartX.current) + " : " + Math.abs(touchStartY.current) + ", " + Math.abs(deltaX) + " : " + Math.abs(deltaY));
 
     touchStartX.current = null;
     touchStartY.current = null;
