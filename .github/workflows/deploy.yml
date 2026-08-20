@@ -29,7 +29,7 @@ jobs:
 
       - name: Set build version
         run: |
-          BUILD_VERSION=$(date -u +"%H%M")
+          BUILD_VERSION=$(date -u +"%HH%MM")
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" src/App.jsx
 
       - name: Install dependencies
