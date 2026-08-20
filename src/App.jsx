@@ -41,8 +41,6 @@ export function App() {
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
     const threshold = 50; // min px to count as an intentional swipe
 
-    alert( touchStartX.current + ":" + touchStartY.current );
-
     // ignore if the gesture was more vertical than horizontal (likely a scroll)
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
       if (deltaX < 0) {
@@ -51,7 +49,9 @@ export function App() {
         goToCategory(-1); // swiped right → previous category
       }
     }
-alert(touchStartX.current +":" +touchStartY.current) ;
+    
+    alert(touchStartX.current + " : " + touchStartY.current + ", " + deltaX + " : " + deltaY) ;
+
     touchStartX.current = null;
     touchStartY.current = null;
   }
