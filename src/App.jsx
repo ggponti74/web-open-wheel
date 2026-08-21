@@ -25,16 +25,15 @@ export function App() {
     setCategoryBySeries((prev) => ({ ...prev, [currentSeries]: categoryId }));
   }
 
-function goToCategory(direction) {
+  function goToCategory(direction) {
+    const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
+    const newIndex = index + direction; // direction is +1 or -1
 
-  const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
-  const newIndex = index + direction; // direction is +1 or -1
+    if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
 
-  if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
-  // or, to wrap instead of clamp:
-  // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
+    selectCategory(CATEGORIES[newIndex].id); // <-- this line is missing
 
-}
+  }
 
   // inside App component, alongside your other state/refs
   const touchStartX = useRef(null);
@@ -60,8 +59,8 @@ function goToCategory(direction) {
         goToCategory(-1); // swiped right → previous category
       }
     }
-    
-    alert(Math.round(touchStartX.current) + " : " + Math.round(touchStartY.current) + ", " + Math.round(deltaX) + " : " + Math.round(deltaY));
+
+    //alert(Math.round(touchStartX.current) + " : " + Math.round(touchStartY.current) + ", " + Math.round(deltaX) + " : " + Math.round(deltaY));
 
     touchStartX.current = null;
     touchStartY.current = null;
