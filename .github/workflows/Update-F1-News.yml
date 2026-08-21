@@ -17,4 +17,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run my script
-        run: src/scripts/scrape-f1-news.mjs
+        run:. /src/scripts/scrape-f1-news.mjs
+
