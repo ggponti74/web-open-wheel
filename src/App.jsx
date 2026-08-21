@@ -83,7 +83,6 @@ function goToCategory(direction) {
         onSelect={selectCategory}
       />
       <SeriesNav activeSeries={currentSeries} onSelect={setCurrentSeries} />
-    <p>__VERSION__NUMBER__</p>
     </div>
   );
 }

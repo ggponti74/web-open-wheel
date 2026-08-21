@@ -31,6 +31,9 @@ jobs:
         run: |
           BUILD_VERSION=$(date -u +"%H:%M")
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" src/App.jsx
+        run: |
+          BUILD_VERSION=$(date -u +"%H:%M")
+          sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" index.html
 
       - name: Install dependencies
         run: npm ci
