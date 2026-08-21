@@ -61,7 +61,7 @@ function goToCategory(direction) {
       }
     }
     
-    alert(Math.abs(touchStartX.current) + " : " + Math.abs(touchStartY.current) + ", " + Math.abs(deltaX) + " : " + Math.abs(deltaY));
+    alert(Math.round(touchStartX.current) + " : " + Math.round(touchStartY.current) + ", " + Math.round(deltaX) + " : " + Math.round(deltaY));
 
     touchStartX.current = null;
     touchStartY.current = null;
