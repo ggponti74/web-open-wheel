@@ -5,6 +5,12 @@ on:
     - cron: '0 * * * *'   # every hour at minute 0
   workflow_dispatch:       # allows manual trigger too
 
+# Grant permissions for the entire workflow
+permissions:
+  contents: write    # Required to push code, create releases, etc.
+  issues: write      # Required to open/close issues
+  pull-requests: write
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
