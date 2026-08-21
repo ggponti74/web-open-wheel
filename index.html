@@ -8,6 +8,17 @@
 </head>
 <body>
   <div id="app"></div>
+
+    <script>
+      window.onerror = function (message, source, line, column, error) {
+        alert(
+          "Error: " + message + "\nLine: " + line + "\nColumn: " + column,
+        );
+
+        return false;
+      };
+    </script> 
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

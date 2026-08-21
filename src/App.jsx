@@ -25,6 +25,17 @@ export function App() {
     setCategoryBySeries((prev) => ({ ...prev, [currentSeries]: categoryId }));
   }
 
+function goToCategory(direction) {
+
+  const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
+  const newIndex = index + direction; // direction is +1 or -1
+
+  if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
+  // or, to wrap instead of clamp:
+  // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
+
+}
+
   // inside App component, alongside your other state/refs
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
@@ -75,15 +86,4 @@ export function App() {
     <p>__VERSION__NUMBER__</p>
     </div>
   );
-}
-
-function goToCategory(direction) {
-
-  const index = CATEGORIES.findIndex((c) => c.id === currentCategory);
-  const newIndex = index + direction; // direction is +1 or -1
-
-  if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
-  // or, to wrap instead of clamp:
-  // const newIndex = (index + direction + CATEGORIES.length) % CATEGORIES.length;
-
 }
