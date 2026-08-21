@@ -27,10 +27,12 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Set build version
+      - name: Set build version app.jsx
         run: |
           BUILD_VERSION=$(date -u +"%H:%M")
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" src/App.jsx
+
+      - name: Set build version index.html
         run: |
           BUILD_VERSION=$(date -u +"%H:%M")
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" index.html
