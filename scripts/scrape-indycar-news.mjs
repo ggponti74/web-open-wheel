@@ -20,4 +20,4 @@ for (const url of sources) {
 
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate)); // newest first
 
-writeFileSync('public/data/f1-news.json', JSON.stringify(allItems, null, 2));
+writeFileSync('public/data/indycar-news.json', JSON.stringify(allItems, null, 2));
