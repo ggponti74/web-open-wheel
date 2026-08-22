@@ -18,18 +18,20 @@ export function NextRace() {
 
   return (
     <div class="next-race-card">
-      <h2>{race.raceName}</h2>
-      <p>{race.Circuit.circuitName}</p>
-       <p>
-        {race.Circuit.Location.locality}, {race.Circuit.Location.country}{' '}
-        {getFlagUrl(race.Circuit.Location.country) && (
+      <h2>
+          {getFlagUrl(race.Circuit.Location.country) && (
           <img
             src={getFlagUrl(race.Circuit.Location.country)}
             alt={race.Circuit.Location.country}
             width="24"
             height="18"
           />
-        )}
+        )}{' '}
+        {race.raceName}
+      </h2>
+      <p>{race.Circuit.circuitName}</p>
+       <p>
+        {race.Circuit.Location.locality}, {race.Circuit.Location.country}   
       </p>
       <p>{dateTime.toLocaleString()}</p>
     </div>
