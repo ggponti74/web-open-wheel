@@ -19,4 +19,4 @@ jobs:
       - name: Scrape F1 News
         run: node ./src/scripts/scrape-f1-news.mjs
       - name: Scrape IndyCar News
-        run: node scripts/scrape-indycar-news.mjs
+        run: node ./src/scripts/scrape-indycar-news.mjs
