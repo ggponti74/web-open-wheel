@@ -2,6 +2,12 @@ import { useState, useEffect } from 'preact/hooks';
 import { getNextRace } from '../api/f1.js';
 import { getFlagEmoji } from '../utils/countryFlags.js';
 
+export function getFlagUrl(countryName) {
+  const iso = COUNTRY_TO_ISO[countryName];
+  if (!iso) return null;
+  return `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
+}
+
 export function NextRace() {
   const [race, setRace] = useState(null);
   const [error, setError] = useState(null);
@@ -12,12 +18,6 @@ export function NextRace() {
 
   if (error) return <p class="status-text">Couldn't load the next race.</p>;
   if (!race) return <p class="status-text">Loading…</p>;
-
-  export function getFlagUrl(countryName) {
-    const iso = COUNTRY_TO_ISO[countryName];
-    if (!iso) return null;
-    return `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
-  }
   
   const dateTime = new Date(`${race.date}T${race.time ?? '00:00:00Z'}`);
 
