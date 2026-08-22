@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { getNextRace } from '../api/f1.js';
+import { getFlagEmoji } from '../utils/countryFlags.js';
 
 export function NextRace() {
   const [race, setRace] = useState(null);
@@ -19,7 +20,7 @@ export function NextRace() {
       <h2>{race.raceName}</h2>
       <p>{race.Circuit.circuitName}</p>
       <p>
-        {race.Circuit.Location.locality}, {race.Circuit.Location.country}
+        {getFlagEmoji(race.Circuit.Location.country)} {race.Circuit.Location.locality}, {race.Circuit.Location.country}
       </p>
       <p>{dateTime.toLocaleString()}</p>
     </div>
