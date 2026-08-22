@@ -45,3 +45,9 @@ export function getFlagEmoji(countryName) {
       String.fromCodePoint(char.charCodeAt(0) + 127397)
     );
 }
+
+export function getFlagUrl(countryName) {
+  const iso = COUNTRY_TO_ISO[countryName];
+  if (!iso) return null;
+  return `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
+}
