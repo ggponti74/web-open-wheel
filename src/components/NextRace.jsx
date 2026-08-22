@@ -13,6 +13,12 @@ export function NextRace() {
   if (error) return <p class="status-text">Couldn't load the next race.</p>;
   if (!race) return <p class="status-text">Loading…</p>;
 
+  export function getFlagUrl(countryName) {
+    const iso = COUNTRY_TO_ISO[countryName];
+    if (!iso) return null;
+    return `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
+  }
+  
   const dateTime = new Date(`${race.date}T${race.time ?? '00:00:00Z'}`);
 
   return (
@@ -20,7 +26,15 @@ export function NextRace() {
       <h2>{race.raceName}</h2>
       <p>{race.Circuit.circuitName}</p>
       <p>
-        {getFlagEmoji(race.Circuit.Location.country)} {race.Circuit.Location.locality}, {race.Circuit.Location.country}
+        {getFlagUrl(race.Circuit.Location.country) && (
+          <img
+            src={getFlagUrl(race.Circuit.Location.country)}
+            alt={race.Circuit.Location.country}
+            width="24"
+            height="18"
+          />
+        )}{' '}
+        {race.Circuit.Location.locality}, {race.Circuit.Location.country}
       </p>
       <p>{dateTime.toLocaleString()}</p>
     </div>
