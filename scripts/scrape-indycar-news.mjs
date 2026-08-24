@@ -4,7 +4,7 @@ import { writeFileSync } from 'fs';
 const parser = new Parser();
 
 const sources = [
-  'https://www.motorsport.com/rss/indycar/news/',
+  //'https://www.motorsport.com/rss/indycar/news/',
   'https://www.racefans.net/category/motorsport/indycar/feed/',
 ];
 
