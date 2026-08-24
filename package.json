@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^30.0.1",
     "preact": "^10.19.0",
     "rss-parser": "^3.13.0"
   },
