@@ -1,5 +1,24 @@
 import Parser from 'rss-parser';
 import { writeFileSync } from 'fs';
+import { Readability } from '@mozilla/readability';
+import { JSDOM } from 'jsdom';
+
+async function fetchExcerpt(url) {
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; web-open-wheel/1.0)' }
+    });
+    const html = await res.text();
+    const dom = new JSDOM(html, { url });
+    const article = new Readability(dom.window.document).parse();
+    if (!article || !article.textContent) return null;
+    const text = article.textContent.trim().replace(/\s+/g, ' ');
+    return text.length > 600 ? text.slice(0, 600) + '…' : text;
+  } catch (e) {
+    console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
+    return null;
+  }
+}
 
 const parser = new Parser();
 const sources = [

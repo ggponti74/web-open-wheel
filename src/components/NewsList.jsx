@@ -1,3 +1,24 @@
+export function NewsCard({ article }) {
+  return (
+    <div className="news-card">
+      <div className="news-source">{article.source}</div>
+      <h3 className="news-title">{article.title}</h3>
+      <p className="news-excerpt">{article.excerpt}</p>
+      <div className="news-footer">
+        <span className="news-date">{formatDate(article.pubDate)}</span>
+        
+          href={article.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="news-readmore"
+        >
+          Full article →
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export function NewsList({ items }) {
   return (
     <ul class="news-list">
