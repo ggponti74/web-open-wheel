@@ -6,13 +6,11 @@ export function NewsCard({ article }) {
       <p className="news-excerpt">{article.excerpt}</p>
       <div className="news-footer">
         <span className="news-date">{formatDate(article.pubDate)}</span>
-        
+        <a>
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
           className="news-readmore"
-        >
-          Full article →
         </a>
       </div>
     </div>
