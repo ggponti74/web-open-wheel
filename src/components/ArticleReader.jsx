@@ -1,4 +1,5 @@
 import { useEffect } from 'preact/hooks';
+import { ArticleReader } from "./ArticleReader.jsx";
 
 export default function ArticleReader({ article, onClose }) {
   useEffect(() => {
