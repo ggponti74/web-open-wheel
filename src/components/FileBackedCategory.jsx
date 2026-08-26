@@ -3,6 +3,7 @@ import { getDataFile } from "../api/dataFile.js";
 import { StandingsList } from "./StandingsList.jsx";
 import { NextRaceCard } from "./NextRaceCard.jsx";
 import { NewsList } from "./NewsList.jsx";
+import { ArticleReader } from "./ArticleReader.jsx";
 
 export function FileBackedCategory({ seriesId, categoryId }) {
   const [data, setData] = useState(undefined); // undefined = loading
