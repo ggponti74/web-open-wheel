@@ -1,5 +1,6 @@
 import { useEffect } from 'preact/hooks';
-
+export function ArticleReader({ article, onClose }) {
+  
 export default function ArticleReader({ article, onClose }) {
   useEffect(() => {
     // Prevent background scroll while reader is open
