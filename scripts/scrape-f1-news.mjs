@@ -30,11 +30,18 @@ const sources = [
 const allItems = [];
 for (const url of sources) {
   const feed = await parser.parseURL(url);
-  allItems.push(...feed.items.map(i => ({
-    title: i.title,
-    link: i.link,
-    pubDate: i.pubDate, // needed for sorting
-  })));
+  const source = feed.title || new URL(url).hostname;
+  for (const i of feed.items) {
+    //console.log(`Fetching excerpt: ${i.title}`);
+    const excerpt = await fetchExcerpt(i.link);
+    allItems.push({
+      title: i.title,
+      link: i.link,
+      pubDate: i.pubDate,
+      source,
+      excerpt,
+    });
+  }
 }
 
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate)); // newest first

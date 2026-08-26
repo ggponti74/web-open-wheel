@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'preact/hooks';
-import { getDataFile } from '../api/dataFile.js';
-import { StandingsList } from './StandingsList.jsx';
-import { NextRaceCard } from './NextRaceCard.jsx';
-import { NewsList } from './NewsList.jsx';
+import { useState, useEffect } from "preact/hooks";
+import { getDataFile } from "../api/dataFile.js";
+import { StandingsList } from "./StandingsList.jsx";
+import { NextRaceCard } from "./NextRaceCard.jsx";
+import { NewsList } from "./NewsList.jsx";
+import { ArticleReader } from "./ArticleReader.jsx";
 
 export function FileBackedCategory({ seriesId, categoryId }) {
   const [data, setData] = useState(undefined); // undefined = loading
+  const [openArticle, setOpenArticle] = useState(null);
 
   useEffect(() => {
     setData(undefined);
@@ -22,15 +24,27 @@ export function FileBackedCategory({ seriesId, categoryId }) {
     );
   }
 
-  if (categoryId === 'drivers' || categoryId === 'teams') {
+  if (categoryId === "drivers" || categoryId === "teams") {
     return <StandingsList items={data} />;
   }
-  if (categoryId === 'next-race') {
+  
+  if (categoryId === "next-race") {
     return <NextRaceCard race={data} />;
   }
-  if (categoryId === 'news') {
-    return <NewsList items={data} />;
+
+    if (categoryId === 'news') {
+    return (
+      <>
+        <NewsList items={data} onSelect={setOpenArticle} />
+        {openArticle && (
+          <ArticleReader
+            article={openArticle}
+            onClose={() => setOpenArticle(null)}
+          />
+        )}
+      </>
+    );
   }
 
   return null;
-      }
+}
