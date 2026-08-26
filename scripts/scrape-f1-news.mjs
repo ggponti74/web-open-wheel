@@ -13,7 +13,7 @@ async function fetchExcerpt(url) {
     const article = new Readability(dom.window.document).parse();
     if (!article || !article.textContent) return null;
     const text = article.textContent.trim().replace(/\s+/g, ' ');
-    return text.length > 600 ? text.slice(0, 600) + '…' : text;
+    return text.length > 1200 ? text.slice(0, 1200) + '…' : text;
   } catch (e) {
     console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
     return null;
