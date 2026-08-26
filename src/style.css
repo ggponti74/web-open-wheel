@@ -192,7 +192,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  bottom: calc(120px + env(safe-area-inset-bottom));
+  bottom: calc(108px + env(safe-area-inset-bottom));
   z-index: 1000;
   background: var(--bg);
   overflow-y: auto;
