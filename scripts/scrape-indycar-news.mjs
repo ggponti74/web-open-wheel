@@ -11,14 +11,23 @@ async function fetchExcerpt(url) {
     const html = await res.text();
     const dom = new JSDOM(html, { url });
     const article = new Readability(dom.window.document).parse();
-    if (!article || !article.textContent) return null;
-        const text = article.textContent
-      .trim()
-      .split(/\n\s*\n/)          // split into paragraphs on blank-line breaks
-      .map(p => p.replace(/\s+/g, ' ').trim())  // collapse whitespace within each paragraph
-      .filter(Boolean)
-      .join('\n\n');
-    return text; //text.length > 600 ? text.slice(0, 600) + ' …' : text;
+    if (!article || !article.content) return null;
+
+    // Mark block-level boundaries before stripping tags, since some sites
+    // separate paragraphs with <br> inside one container rather than
+    // using distinct <p> elements.
+    const markedHtml = article.content
+      .replace(/<\/(p|div|li|h[1-6])>/gi, '\n\n')
+      .replace(/<br\s*\/?>/gi, '\n\n');
+
+    const textDom = new JSDOM(`<div>${markedHtml}</div>`);
+    const paragraphs = textDom.window.document.body.textContent
+      .split(/\n\s*\n/)
+      .map(p => p.replace(/\s+/g, ' ').trim())
+      .filter(Boolean);
+
+    if (paragraphs.length === 0) return null;
+    return paragraphs.join('\n\n');
   } catch (e) {
     console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
     return null;
