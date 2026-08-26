@@ -35,7 +35,7 @@ export function ArticleReader({ article, onClose }) {
         <h1>{article.title}</h1>
         {article.source && <div class="article-reader-source">{article.source}</div>}
         <div class="article-reader-body">
-          {article.excerpt.split('\n').map((para, i) =>
+          {article.excerpt.split(/\n\s*\n/).map((para, i) =>
             para.trim() ? <p key={i}>{para}</p> : null
           )}
         </div>

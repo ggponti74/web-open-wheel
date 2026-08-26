@@ -12,7 +12,12 @@ async function fetchExcerpt(url) {
     const dom = new JSDOM(html, { url });
     const article = new Readability(dom.window.document).parse();
     if (!article || !article.textContent) return null;
-    const text = article.textContent.trim().replace(/\s+/g, ' ');
+        const text = article.textContent
+      .trim()
+      .split(/\n\s*\n/)          // split into paragraphs on blank-line breaks
+      .map(p => p.replace(/\s+/g, ' ').trim())  // collapse whitespace within each paragraph
+      .filter(Boolean)
+      .join('\n\n');
     return text; //text.length > 600 ? text.slice(0, 600) + '…' : text;
   } catch (e) {
     console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
