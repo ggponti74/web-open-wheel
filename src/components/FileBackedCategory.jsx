@@ -11,6 +11,7 @@ export function FileBackedCategory({ seriesId, categoryId }) {
 
   useEffect(() => {
     setData(undefined);
+    setOpenIndex(null);
     getDataFile(`${seriesId}-${categoryId}.json`).then(setData);
   }, [seriesId, categoryId]);
 
