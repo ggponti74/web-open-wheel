@@ -156,6 +156,18 @@ body {
   color: var(--text-muted);
 }
 
+.next-race-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.next-race-flag {
+  width: 20px;
+  height: auto;
+  border-radius: 2px;
+}
+
 .news-list {
   list-style: none;
   margin: 8px 0 0;
