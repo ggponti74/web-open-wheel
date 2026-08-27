@@ -15,14 +15,19 @@ export function NextRaceCard({ race }) {
 
   return (
     <div class="next-race-card">
-      <h2>{race.name}</h2>
+      <h2>
+        {flagUrl && (
+          <img
+            src={flagUrl}
+            alt={country}
+            width="24"
+            height="18"
+          />
+        )}{' '}
+        {race.name}
+      </h2>
       {race.circuit && <p>{race.circuit}</p>}
-      {race.location && (
-        <p class="next-race-location">
-          {flagUrl && <img src={flagUrl} alt={country} class="next-race-flag" />}
-          {race.location}
-        </p>
-      )}
+      {race.location && <p>{race.location}</p>}
       {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
     </div>
   );
