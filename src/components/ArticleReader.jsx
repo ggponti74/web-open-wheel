@@ -1,13 +1,21 @@
 import { useEffect, useRef } from "preact/hooks";
 
+import { useEffect, useRef } from 'preact/hooks';
+
 export function ArticleReader({ article, onClose, onPrev, onNext }) {
   useEffect(() => {
     // Prevent background scroll while reader is open
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
   }, []);
+
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = 0;
+    }
+  }, [article]);
 
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
@@ -49,6 +57,7 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
       class="article-reader"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      ref={scrollRef} 
     >
       <div class="article-reader-header">
         <button
