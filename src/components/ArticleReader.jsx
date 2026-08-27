@@ -13,11 +13,13 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
   const touchStartY = useRef(null);
 
   function handleTouchStart(e) {
+    e.stopPropagation();
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
   }
 
   function handleTouchEnd(e) {
+    e.stopPropagation();
     if (touchStartX.current === null) return;
 
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
