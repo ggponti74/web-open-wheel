@@ -20,3 +20,5 @@ jobs:
         run: node ./scripts/scrape-f1-news.mjs
       - name: Scrape IndyCar News
         run: node ./scripts/scrape-indycar-news.mjs
+      - name: Scrape IndyCar Schedule
+        run: node ./scripts/scrape-indycar-schedule.mjs

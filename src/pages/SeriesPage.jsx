@@ -13,7 +13,6 @@ export function SeriesPage({ seriesId, categoryId }) {
     if (categoryId === 'next-race') //return <NextRace />;
       return (    
       <div class="series-page">
-        <h1>{categoryLabel}</h1>
         <NextRace />
       </div>
     );
@@ -21,7 +20,6 @@ export function SeriesPage({ seriesId, categoryId }) {
     if (categoryId === 'drivers') //return <DriverStandings />;
     return (    
       <div class="series-page">
-        <h1>{categoryLabel}</h1>
          <DriverStandings />
       </div>
     );
@@ -29,7 +27,6 @@ export function SeriesPage({ seriesId, categoryId }) {
     if (categoryId === 'teams') //return <TeamStandings />;
     return (    
       <div class="series-page">
-        <h1>{categoryLabel}</h1>
         <TeamStandings />
       </div>
     );
@@ -39,7 +36,6 @@ export function SeriesPage({ seriesId, categoryId }) {
 
   return (    
     <div class="series-page">
-      <h1>{categoryLabel}</h1>
       <FileBackedCategory seriesId={seriesId} categoryId={categoryId} />
     </div>
   );
