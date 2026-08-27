@@ -1,13 +1,13 @@
 export function NewsList({ items, onSelect }) {
   return (
     <ul class="news-list">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <li key={item.link} class="news-list__item">
           {item.excerpt ? (
             <button
               type="button"
               class="news-list__link"
-              onClick={() => onSelect(item)}
+              onClick={() => onSelect(index)}
             >
               {item.title}
             </button>

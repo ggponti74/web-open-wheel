@@ -1,20 +1,53 @@
-import { useEffect } from 'preact/hooks';
-  
-export function ArticleReader({ article, onClose }) {
+import { useEffect, useRef } from "preact/hooks";
+
+export function ArticleReader({ article, onClose, onPrev, onNext }) {
   useEffect(() => {
     // Prevent background scroll while reader is open
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
+
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }
+
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return;
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    const threshold = 50;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
+      if (deltaX < 0) {
+        onNext && onNext(); // swiped left → next article
+      } else {
+        onPrev && onPrev(); // swiped right → previous article
+      }
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
+  }
 
   if (!article) return null;
 
   const openExternal = () => {
-    window.open(article.link, '_blank', 'noopener,noreferrer');
+    window.open(article.link, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div class="article-reader">
+    <div
+      class="article-reader"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div class="article-reader-header">
         <button
           class="article-reader-icon-btn"
@@ -33,11 +66,13 @@ export function ArticleReader({ article, onClose }) {
       </div>
       <div class="article-reader-content">
         <h1>{article.title}</h1>
-        {article.source && <div class="article-reader-source">{article.source}</div>}
+        {article.source && (
+          <div class="article-reader-source">{article.source}</div>
+        )}
         <div class="article-reader-body">
-          {article.excerpt.split(/\n\s*\n/).map((para, i) =>
-            para.trim() ? <p key={i}>{para}</p> : null
-          )}
+          {article.excerpt
+            .split(/\n\s*\n/)
+            .map((para, i) => (para.trim() ? <p key={i}>{para}</p> : null))}
         </div>
       </div>
     </div>

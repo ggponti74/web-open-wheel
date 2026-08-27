@@ -7,7 +7,7 @@ import { ArticleReader } from "./ArticleReader.jsx";
 
 export function FileBackedCategory({ seriesId, categoryId }) {
   const [data, setData] = useState(undefined); // undefined = loading
-  const [openArticle, setOpenArticle] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
     setData(undefined);
@@ -27,19 +27,25 @@ export function FileBackedCategory({ seriesId, categoryId }) {
   if (categoryId === "drivers" || categoryId === "teams") {
     return <StandingsList items={data} />;
   }
-  
+
   if (categoryId === "next-race") {
     return <NextRaceCard race={data} />;
   }
 
-    if (categoryId === 'news') {
+  if (categoryId === "news") {
     return (
       <>
-        <NewsList items={data} onSelect={setOpenArticle} />
-        {openArticle && (
+        <NewsList items={data} onSelect={setOpenIndex} />
+        {openIndex !== null && (
           <ArticleReader
-            article={openArticle}
-            onClose={() => setOpenArticle(null)}
+            article={data[openIndex]}
+            onClose={() => setOpenIndex(null)}
+            onPrev={openIndex > 0 ? () => setOpenIndex(openIndex - 1) : null}
+            onNext={
+              openIndex < data.length - 1
+                ? () => setOpenIndex(openIndex + 1)
+                : null
+            }
           />
         )}
       </>

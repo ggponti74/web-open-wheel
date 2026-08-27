@@ -184,7 +184,6 @@ body {
   color: inherit;
   text-align: left;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .article-reader {
@@ -217,4 +216,20 @@ body {
   padding: 8px;
   color: var(--text);
   cursor: pointer;
+}
+
+.article-reader-content {
+  padding: 20px 24px 40px;
+}
+
+.article-reader-content h1 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+
+.article-reader-body p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1em;
 }
