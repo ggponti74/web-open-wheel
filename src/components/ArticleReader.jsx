@@ -52,12 +52,6 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
     window.open(article.link, "_blank", "noopener,noreferrer");
   };
 
-  if (!article) return null;
-
-  const openExternal = () => {
-    window.open(article.link, "_blank", "noopener,noreferrer");
-  };
-
   let rootSite = "";
   try {
     rootSite = new URL(article.link).hostname.replace(/^www\./, "");
