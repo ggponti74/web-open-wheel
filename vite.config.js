@@ -8,7 +8,7 @@ export default defineConfig({
     preact(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'icon-192.png', 'icon-512.png'],
+      includeAssets: ['favicon.ico', 'public/icons/icon-192.png', 'public/icons/icon-512.png'],
       manifest: {
         name: 'Motorsport Dashboard',
         short_name: 'Motorsport',
@@ -19,8 +19,8 @@ export default defineConfig({
         start_url: '/web-open-wheel/',
 scope: '/web-open-wheel/',
         icons: [
-          { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'icon-512.png', sizes: '512x512', type: 'image/png' }
+          { src: 'public/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'public/icons/icon-512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
