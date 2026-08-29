@@ -3,8 +3,10 @@ import { useEffect, useRef } from "preact/hooks";
 export function ArticleReader({ article, onClose, onPrev, onNext }) {
   useEffect(() => {
     // Prevent background scroll while reader is open
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   const scrollRef = useRef(null);
@@ -50,12 +52,25 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
     window.open(article.link, "_blank", "noopener,noreferrer");
   };
 
+  if (!article) return null;
+
+  const openExternal = () => {
+    window.open(article.link, "_blank", "noopener,noreferrer");
+  };
+
+  let rootSite = "";
+  try {
+    rootSite = new URL(article.link).hostname.replace(/^www\./, "");
+  } catch {
+    rootSite = "";
+  }
+
   return (
     <div
       class="article-reader"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      ref={scrollRef} 
+      ref={scrollRef}
     >
       <div class="article-reader-header">
         <button
@@ -65,6 +80,7 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
         >
           ✕
         </button>
+        {rootSite && <span class="article-reader-domain">{rootSite}</span>}
         <button
           class="article-reader-icon-btn"
           onClick={openExternal}

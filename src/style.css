@@ -220,6 +220,12 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+.article-reader-domain {
+  font-size: 0.85rem;
+  color: var(--text-secondary, gray);
+  opacity: 0.8;
+}
+
 .article-reader-icon-btn {
   background: none;
   border: none;
