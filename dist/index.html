@@ -4,11 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0f0f0f" />
-  <title>Motorsport Dashboard</title>
-  <script type="module" crossorigin src="/web-open-wheel/assets/index-BLXJ7kF1.js"></script>
-  <link rel="stylesheet" crossorigin href="/web-open-wheel/assets/index-yeXtIRG_.css">
+  <title>Open-wheel Dashboard</title>
+  <script type="module" crossorigin src="/web-open-wheel/assets/index-BEBoe1Eq.js"></script>
+  <link rel="stylesheet" crossorigin href="/web-open-wheel/assets/index-rWp1XD27.css">
 <link rel="manifest" href="/web-open-wheel/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/web-open-wheel/registerSW.js"></script></head>
 <body>
   <div id="app"></div>
+
+    <script>
+      window.onerror = function (message, source, line, column, error) {
+        alert(
+          "Error: " + message + "\nLine: " + line + "\nColumn: " + column,
+        );
+
+        return false;
+      };
+    </script>
 </body>
 </html>
