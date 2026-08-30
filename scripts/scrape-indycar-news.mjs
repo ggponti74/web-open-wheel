@@ -38,7 +38,7 @@ const parser = new Parser();
 
 const sources = [
 
-  "https://www.indycar.com/news/rss/",
+ // "https://www.indycar.com/news/rss/",
   "https://racer.com/category/indycar/feed/",
 
 ];
