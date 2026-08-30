@@ -34,8 +34,9 @@ async function fetchExcerpt(url) {
 const parser = new Parser();
 const sources = [
   "https://www.formula1.com/en/latest/all.xml",
-  "https://www.motorsport.com/rss/f1/news/",
-  "https://www.autosport.com/rss/f1/news/",
+
+"https://racer.com/category/formula-1/feed",
+
 ];
 
 const allItems = [];
