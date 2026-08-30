@@ -38,7 +38,7 @@ const sources = [
 "https://www.indycar.com/News", 
 
 "https://racer.com/category/IndyCar/feed",
-  "https://www.racefans.net/category/motorsport/indycar/feed/",
+
 ];
 
 const allItems = [];
