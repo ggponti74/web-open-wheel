@@ -5,6 +5,10 @@ on:
     - cron: '15 * * * *'   # every hour at minute 0
   workflow_dispatch:       # allows manual trigger too
 
+concurrency:
+  group: scrape-workflow
+  cancel-in-progress: false
+
 # Grant permissions for the entire workflow
 permissions:
   contents: write    # Required to push code, create releases, etc.
