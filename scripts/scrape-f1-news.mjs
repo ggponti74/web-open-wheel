@@ -35,7 +35,7 @@ const parser = new Parser();
 const sources = [
   "https://www.formula1.com/en/latest/all.xml",
 
-"https://racer.com/category/formula-1/feed",
+  "https://racer.com/category/formula-1/feed",
 
 ];
 
