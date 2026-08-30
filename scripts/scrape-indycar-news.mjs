@@ -34,10 +34,7 @@ async function fetchExcerpt(url) {
 const parser = new Parser();
 
 const sources = [
-
-"https://www.indycar.com/News", 
-
-"https://racer.com/category/IndyCar/feed",
+  "https://racer.com/category/indycar/feed/",
 
 ];
 
