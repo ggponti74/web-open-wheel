@@ -86,3 +86,5 @@ writeFileSync(
 console.log(
   `Successfully wrote ${limitedItems.length} items to indycar-news.json`,
 );
+
+process.exit(0);

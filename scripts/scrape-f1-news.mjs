@@ -74,4 +74,6 @@ writeFileSync(
   JSON.stringify(limitedItems, null, 2),
 );
 
-//console.log(`Successfully wrote ${limitedItems.length} items to f1-news.json`);
+console.log(`Successfully wrote ${limitedItems.length} items to f1-news.json`);
+
+process.exit(0);
