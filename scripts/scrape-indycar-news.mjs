@@ -5,6 +5,13 @@ import { JSDOM } from "jsdom";
 
 const parser = new Parser();
 
+function extractExcerpt(html) {
+  if (!html) return null;
+  const dom = new JSDOM(`<div>${html}</div>`);
+  const p = dom.window.document.querySelector("p");
+  return p ? p.textContent.replace(/\s+/g, " ").trim() : null;
+}
+
 async function parseFeed(url) {
   const res = await fetch(url, {
     headers: {
@@ -39,7 +46,7 @@ for (const url of sources) {
         link: i.link,
         pubDate: i.pubDate,
         source,
-        excerpt: i.contentSnippet || i.description || null,
+        excerpt: extractExcerpt(i.content) || i.contentSnippet || i.description || null,
       });
     }
   } catch (e) {
