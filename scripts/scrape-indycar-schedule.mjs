@@ -70,6 +70,6 @@ async function scrapeIndyCarSchedule() {
   }
 }
 
-scrapeIndyCarSchedule();
+await scrapeIndyCarSchedule();
 
 process.exit(0);

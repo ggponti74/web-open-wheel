@@ -41,6 +41,6 @@ async function scrapeIndyCarManufacturers() {
   }
 }
 
-scrapeIndyCarManufacturers();
+await scrapeIndyCarManufacturers();
 
 process.exit(0);

@@ -52,6 +52,6 @@ async function scrapeIndyCarDrivers() {
   }
 }
 
-scrapeIndyCarDrivers();
+awaitscrapeIndyCarDrivers();
 
 process.exit(0);
