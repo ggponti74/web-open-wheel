@@ -3,44 +3,26 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
-async function fetchExcerpt(url) {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-      },
-    });
-    const html = await res.text();
-    const dom = new JSDOM(html, { url });
-    const article = new Readability(dom.window.document).parse();
-    if (!article || !article.content) return null;
-
-    const markedHtml = article.content
-      .replace(/<\/(p|div|li|h[1-6])>/gi, "\n\n")
-      .replace(/<br\s*\/?>/gi, "\n\n");
-
-    const textDom = new JSDOM(`<div>${markedHtml}</div>`);
-    const paragraphs = textDom.window.document.body.textContent
-      .split(/\n\s*\n/)
-      .map((p) => p.replace(/\s+/g, " ").trim())
-      .filter(Boolean);
-
-    if (paragraphs.length === 0) return null;
-    return paragraphs.join("\n\n");
-  } catch (e) {
-    console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
-    return null;
-  }
-}
-
 const parser = new Parser();
 
+async function parseFeed(url) {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+    },
+  });
+  const xml = await res.text();
+  const sanitized = xml.replace(
+    /&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-fA-F]+;)/g,
+    "&amp;",
+  );
+  return parser.parseString(sanitized);
+}
+
 const sources = [
-
-  "https://www.indycar.com/news/rss/",
-  "https://racer.com/category/indycar/feed/",
-
+  "https://www.indycar.com/news/rss/", // blocked: serves a bot-check/consent page instead of the feed, even with browser headers
+  //"https://racer.com/category/indycar/feed/",
 ];
 
 const allItems = [];
@@ -48,7 +30,7 @@ const allItems = [];
 // Pass 1: Collect metadata from all sources
 for (const url of sources) {
   try {
-    const feed = await parser.parseURL(url);
+    const feed = await parseFeed(url);
     const source = feed.title || new URL(url).hostname;
     for (const i of feed.items) {
       allItems.push({
