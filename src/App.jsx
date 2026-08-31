@@ -101,6 +101,43 @@ export function App() {
     </div>
   );
 
+  return (
+    <div class="app-shell">
+      <main
+        class="app-content"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <SeriesPage
+          seriesId={currentSeries}
+          categoryId={currentCategory}
+          onFerrariTap={handleFerrariTap}
+        />
+      </main>
+      <CategoryNav
+        seriesId={currentSeries}
+        activeCategory={currentCategory}
+        onSelect={selectCategory}
+      />
+      <SeriesNav activeSeries={currentSeries} onSelect={setCurrentSeries} />
+      {showVersion && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "4px",
+            right: "4px",
+            fontSize: "0.65rem",
+            color: "var(--text)",
+            opacity: 0.6,
+            zIndex: 9999,
+          }}
+        >
+          v{VERSION}
+        </div>
+      )}
+    </div>
+  );
+
   {
     showVersion && (
       <div
