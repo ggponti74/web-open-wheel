@@ -13,19 +13,6 @@ const defaultCategoryBySeries = Object.fromEntries(
   SERIES.map((s) => [s.id, "news"]),
 );
 
-const [logoTapCount, setLogoTapCount] = useState(0);
-const [showVersion, setShowVersion] = useState(false);
-
-const handleFerrariTap = () => {
-  const next = logoTapCount + 1;
-  if (next >= 5) {
-    setShowVersion(v => !v);
-    setLogoTapCount(0);
-  } else {
-    setLogoTapCount(next);
-  }
-};
-
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
   const [categoryBySeries, setCategoryBySeries] = useState(
@@ -33,6 +20,19 @@ export function App() {
   );
 
   const currentCategory = categoryBySeries[currentSeries];
+
+  const [logoTapCount, setLogoTapCount] = useState(0);
+  const [showVersion, setShowVersion] = useState(false);
+
+  const handleFerrariTap = () => {
+    const next = logoTapCount + 1;
+    if (next >= 5) {
+      setShowVersion((v) => !v);
+      setLogoTapCount(0);
+    } else {
+      setLogoTapCount(next);
+    }
+  };
 
   function selectCategory(categoryId) {
     setCategoryBySeries((prev) => ({ ...prev, [currentSeries]: categoryId }));
