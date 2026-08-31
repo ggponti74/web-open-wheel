@@ -21,9 +21,7 @@ export function TeamStandings() {
           key={s.Constructor.constructorId}
           class="standings-list__item"
           onClick={
-            team.constructor.constructorId === "ferrari"
-              ? handleFerrariTap
-              : undefined
+            s.Constructor.constructorId === "ferrari" ? onFerrariTap : undefined
           }
         >
           <span class="standings-list__pos">{s.position}</span>
