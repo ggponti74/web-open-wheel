@@ -21,19 +21,6 @@ export function App() {
 
   const currentCategory = categoryBySeries[currentSeries];
 
-  const [logoTapCount, setLogoTapCount] = useState(0);
-  const [showVersion, setShowVersion] = useState(false);
-
-  const handleFerrariTap = () => {
-    const next = logoTapCount + 1;
-    if (next >= 5) {
-      setShowVersion((v) => !v);
-      setLogoTapCount(0);
-    } else {
-      setLogoTapCount(next);
-    }
-  };
-
   function selectCategory(categoryId) {
     setCategoryBySeries((prev) => ({ ...prev, [currentSeries]: categoryId }));
   }
@@ -88,7 +75,6 @@ export function App() {
         <SeriesPage
           seriesId={currentSeries}
           categoryId={currentCategory}
-          onFerrariTap={handleFerrariTap}
         />
       </main>
 
@@ -111,7 +97,6 @@ export function App() {
         <SeriesPage
           seriesId={currentSeries}
           categoryId={currentCategory}
-          onFerrariTap={handleFerrariTap}
         />
       </main>
       <CategoryNav
@@ -119,40 +104,5 @@ export function App() {
         activeCategory={currentCategory}
         onSelect={selectCategory}
       />
-      <SeriesNav activeSeries={currentSeries} onSelect={setCurrentSeries} />
-      {showVersion && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: "4px",
-            right: "4px",
-            fontSize: "0.65rem",
-            color: "var(--text)",
-            opacity: 0.6,
-            zIndex: 9999,
-          }}
-        >
-          v{VERSION}
-        </div>
-      )}
-    </div>
-  );
-
-  {
-    showVersion && (
-      <div
-        style={{
-          position: "fixed",
-          bottom: "4px",
-          right: "4px",
-          fontSize: "0.65rem",
-          color: "var(--text)",
-          opacity: 0.6,
-          zIndex: 9999,
-        }}
-      >
-        v{VERSION}
-      </div>
-    );
   }
 }
