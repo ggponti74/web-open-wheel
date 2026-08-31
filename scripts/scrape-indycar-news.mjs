@@ -23,6 +23,8 @@ async function parseFeed(url) {
 const sources = [
   //"https://www.indycar.com/news/rss/", // blocked: serves a bot-check/consent page instead of the feed, even with browser headers
   "https://racer.com/category/indycar/feed/",
+  "https://www.motorsport.com/rss/google/",
+  "https://www.yardbarker.com/rss/sport_merged/15",
 ];
 
 const allItems = [];
