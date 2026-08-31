@@ -104,5 +104,5 @@ export function App() {
         activeCategory={currentCategory}
         onSelect={selectCategory}
       />
-  }
+ );
 }
