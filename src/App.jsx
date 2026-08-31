@@ -1,4 +1,4 @@
-const VERSION = "1.1.__BUILD_VERSION__.2";
+, const VERSION = "1.1.__BUILD_VERSION__.2";
 
 import { useRef } from "preact/hooks";
 import { useState } from "preact/hooks";
@@ -104,5 +104,6 @@ export function App() {
         activeCategory={currentCategory}
         onSelect={selectCategory}
       />
+    </div>
  );
 }
