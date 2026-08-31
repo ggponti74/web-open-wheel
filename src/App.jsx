@@ -13,6 +13,19 @@ const defaultCategoryBySeries = Object.fromEntries(
   SERIES.map((s) => [s.id, "news"]),
 );
 
+const [logoTapCount, setLogoTapCount] = useState(0);
+const [showVersion, setShowVersion] = useState(false);
+
+const handleFerrariTap = () => {
+  const next = logoTapCount + 1;
+  if (next >= 5) {
+    setShowVersion(v => !v);
+    setLogoTapCount(0);
+  } else {
+    setLogoTapCount(next);
+  }
+};
+
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
   const [categoryBySeries, setCategoryBySeries] = useState(
@@ -32,7 +45,6 @@ export function App() {
     if (newIndex < 0 || newIndex >= CATEGORIES.length) return; // clamp at ends
 
     selectCategory(CATEGORIES[newIndex].id); // <-- this line is missing
-
   }
 
   // inside App component, alongside your other state/refs
