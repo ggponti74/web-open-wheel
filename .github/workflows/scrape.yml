@@ -23,6 +23,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Scrape F1 News
         run: node ./scripts/scrape-f1-news.mjs
+      - name: Scrape F2 News
+        run: node ./scripts/scrape-f2-news.mjs
+      - name: Scrape F3 News
+        run: node ./scripts/scrape-f3-news.mjs
       - name: Scrape IndyCar News
         run: node ./scripts/scrape-indycar-news.mjs
       - name: Scrape IndyCar Schedule
