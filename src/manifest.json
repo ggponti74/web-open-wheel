@@ -1,6 +1,8 @@
 {
   "short_name": "OW Dashboard",
-  "name": "Open-wheel Dashboard",
+  "name": "OW Dashboard",
+  "version": "1.0.__VERSION_NUMBER__.1",
+  "version_name": "1.0.__VERSION_NUMBER__.1",
   "icons": [
     {
       "src": "public/icons/icon-192.png",
