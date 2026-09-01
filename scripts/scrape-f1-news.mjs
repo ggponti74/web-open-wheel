@@ -33,10 +33,8 @@ async function fetchExcerpt(url) {
 
 const parser = new Parser();
 const sources = [
-
   "https://www.formula1.com/en/latest/all.xml",
   "https://racingnews365.com/feed/news.xml",
-
 ];
 
 const allItems = [];
