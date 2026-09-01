@@ -27,12 +27,15 @@ scope: '/web-open-wheel/',
         // cache the scraped/live JSON data so the app works offline
         // with the last successfully fetched standings/news
         runtimeCaching: [
-          {
-            urlPattern: /\/data\/.*\.json$/,
-            handler: 'StaleWhileRevalidate',
-            options: { cacheName: 'motorsport-data' }
-          }
-        ]
+  {
+    urlPattern: /\/data\/.*\.json$/,
+    handler: 'NetworkFirst',
+    options: {
+      cacheName: 'motorsport-data',
+      networkTimeoutSeconds: 15,
+    }
+  }
+]
       }
     })
   ]
