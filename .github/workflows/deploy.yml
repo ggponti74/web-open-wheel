@@ -28,7 +28,6 @@ jobs:
       - name: Set build version app.jsx
         run: |
           BUILD_VERSION=$(date -u +"%m%d")
-          sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" index.html
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" src/App.jsx
           sed -i "s/__BUILD_VERSION__/$BUILD_VERSION/" src/manifest.json
 
