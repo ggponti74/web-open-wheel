@@ -1,4 +1,5 @@
 const VERSION = "1.1.__BUILD_VERSION__.3";
+const WHATS_NEW = "Added Formula 2, Formula 3, and Formula E driver standings.";
 
 import { useRef } from "preact/hooks";
 import { useState } from "preact/hooks";
