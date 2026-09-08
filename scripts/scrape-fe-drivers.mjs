@@ -38,11 +38,11 @@ async function scrapeFEDrivers() {
 
     if (standings.length === 0) {
       console.error('No driver entries parsed from FE standings response');
-      writeFileSync('public/data/formulae-drivers.json', 'null');
+      writeFileSync('public/data/fe-drivers.json', 'null');
       return;
     }
 
-    writeFileSync('public/data/formulae-drivers.json', JSON.stringify(standings, null, 2));
+    writeFileSync('public/data/fe-drivers.json', JSON.stringify(standings, null, 2));
     console.log(`Wrote ${standings.length} drivers to formulae-drivers.json`);
   } catch (e) {
     console.error('FE drivers scrape failed:', e.message);
