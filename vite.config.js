@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
-        name: 'Open-wheel Dashboard',
-        short_name: 'Open-wheel',
+        name: 'OW Dashboard',
+        short_name: 'OWD',
         description: 'Standings, next race, and news for F1, F2, F3, IndyCar, and Formula E',
         theme_color: '#0f0f0f',
         background_color: '#0f0f0f',
