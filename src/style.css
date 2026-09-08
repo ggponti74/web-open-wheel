@@ -62,6 +62,12 @@ body {
 /* --- Shared nav bar styling --- */
 .category-nav button.is-active,
 .series-nav button.is-active {
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
   color: var(--text);
   font-weight: 600;
   background: var(--border);
