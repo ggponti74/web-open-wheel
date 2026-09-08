@@ -49,7 +49,7 @@ async function parseFeed(url) {
 }
 
 const sources = [
-    "https://feedfry.com/rss/11f1a6daacee436c9d0c174853c7eda6",
+    "https://feedfry.com/rss/11f1a6dbf0230feeb870c0936a39d660",
 ];
 
 const allItems = [];
