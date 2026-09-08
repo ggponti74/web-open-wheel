@@ -29,7 +29,7 @@ export function SeriesPage({ seriesId, categoryId }) {
     if (categoryId === "teams")
       return (
         <div class="series-page">
-          <TeamStandings onFerrariTap={onFerrariTap} />
+          <TeamStandings />
         </div>
       );
 
