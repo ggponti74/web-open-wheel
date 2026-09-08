@@ -1,1 +1,112 @@
-null
+[
+  {
+    "position": 1,
+    "name": "N. Tsolov",
+    "points": 177
+  },
+  {
+    "position": 2,
+    "name": "R. Câmara",
+    "points": 166
+  },
+  {
+    "position": 3,
+    "name": "G. Mini",
+    "points": 147
+  },
+  {
+    "position": 4,
+    "name": "A. Dunne",
+    "points": 118
+  },
+  {
+    "position": 5,
+    "name": "N. Leon",
+    "points": 114
+  },
+  {
+    "position": 6,
+    "name": "K. Maini",
+    "points": 88
+  },
+  {
+    "position": 7,
+    "name": "D. Beganovic",
+    "points": 79
+  },
+  {
+    "position": 8,
+    "name": "J. Dürksen",
+    "points": 78
+  },
+  {
+    "position": 9,
+    "name": "L. van Hoepen",
+    "points": 66
+  },
+  {
+    "position": 10,
+    "name": "T. Inthraphuvasak",
+    "points": 63
+  },
+  {
+    "position": 11,
+    "name": "M. Stenshorne",
+    "points": 62
+  },
+  {
+    "position": 12,
+    "name": "R. Miyata",
+    "points": 44
+  },
+  {
+    "position": 13,
+    "name": "J. Bennett",
+    "points": 38
+  },
+  {
+    "position": 14,
+    "name": "R. Villagomez",
+    "points": 38
+  },
+  {
+    "position": 15,
+    "name": "O. Goethe",
+    "points": 37
+  },
+  {
+    "position": 16,
+    "name": "S. Montoya",
+    "points": 28
+  },
+  {
+    "position": 17,
+    "name": "C. Herta",
+    "points": 26
+  },
+  {
+    "position": 18,
+    "name": "R. Bilinski",
+    "points": 24
+  },
+  {
+    "position": 19,
+    "name": "N. Varrone",
+    "points": 15
+  },
+  {
+    "position": 20,
+    "name": "M. Boya",
+    "points": 12
+  },
+  {
+    "position": 21,
+    "name": "E. Fittipaldi",
+    "points": 10
+  },
+  {
+    "position": 22,
+    "name": "C. Shields",
+    "points": 10
+  }
+]

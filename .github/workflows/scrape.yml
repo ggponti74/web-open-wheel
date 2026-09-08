@@ -41,6 +41,8 @@ jobs:
         run: node ./scripts/scrape-indycar-manufacturers.mjs
       - name: Scrape FE News
         run: node ./scripts/scrape-fe-news.mjs
+      - name: Scrape FE Drivers
+        run: node ./scripts/scrape-fe-drivers.mjs
       - name: Commit and push updated data
         id: commit
         run: |

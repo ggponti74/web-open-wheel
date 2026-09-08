@@ -24,21 +24,21 @@ async function scrapeF3Drivers() {
 
     const standings = rows
       .map((row) => {
-        const cells = Array.from(row.querySelectorAll('td'));
-        if (cells.length < 2) return null;
+        // The table has two "sticky" frozen <th> columns: position+name on
+        // the left, total points on the right. Everything in between
+        // (per-round breakdown) is plain <td> and is ignored.
+        const ths = row.querySelectorAll('th');
+        if (ths.length < 2) return null;
 
-        // First cell is like "1F. Slater" — leading digits are the position,
-        // the rest (no space after the digits) is the driver name.
-        const firstCellText = cells[0].textContent.replace(/\s+/g, ' ').trim();
-        const match = firstCellText.match(/^(\d+)\s*(.+)$/);
-        if (!match) return null;
+        const nameCell = ths[0];
+        const pointsCell = ths[ths.length - 1];
 
-        const position = parseInt(match[1], 10);
-        const name = match[2].trim();
+        const spans = nameCell.querySelectorAll('span');
+        if (spans.length < 2) return null;
 
-        // Last cell is the total Points column.
-        const pointsText = cells[cells.length - 1].textContent.replace(/\s+/g, '').trim();
-        const points = parseInt(pointsText, 10);
+        const position = parseInt(spans[0].textContent.trim(), 10);
+        const name = spans[1].textContent.trim();
+        const points = parseInt(pointsCell.textContent.replace(/\s+/g, '').trim(), 10);
 
         if (!name || Number.isNaN(position) || Number.isNaN(points)) return null;
 
