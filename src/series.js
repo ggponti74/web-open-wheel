@@ -25,7 +25,7 @@ export const SERIES = [
     teamsLabel: 'Manufacturers',
   },
   {
-    id: 'formulae',
+    id: 'fe',
     label: 'Formula E',
     teamsLabel: 'Teams', // includes manufacturer sub-section within this view
   },
