@@ -60,18 +60,15 @@ body {
 }
 
 /* --- Shared nav bar styling --- */
-.category-nav button.is-active,
-.series-nav button.is-active {
+/* --- Shared nav bar styling --- */
+.category-nav,
+.series-nav {
   position: fixed;
   left: 0;
   right: 0;
   display: flex;
   background: var(--surface);
   border-top: 1px solid var(--border);
-  color: var(--text);
-  font-weight: 600;
-  background: var(--border);
-  border-radius: 8px;
 }
 
 .category-nav button {
@@ -98,6 +95,8 @@ body {
 .series-nav button.is-active {
   color: var(--text);
   font-weight: 600;
+  background: var(--border);
+  border-radius: 8px;
 }
 
 /* Category nav sits above the series nav */
