@@ -3,6 +3,13 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
+const MIN_EXCERPT_LENGTH = 150;
+
+function isLowContent(excerpt) {
+  if (!excerpt) return true;
+  return excerpt.trim().length < MIN_EXCERPT_LENGTH;
+}
+
 async function fetchExcerpt(url) {
   try {
     const res = await fetch(url, {
@@ -64,6 +71,13 @@ const limitedItems = allItems.slice(0, 25);
 // Pass 2: Fetch excerpts for the top 25 items
 for (const item of limitedItems) {
   item.excerpt = await fetchExcerpt(item.link);
+}
+
+// Pass 3: drop low-content items and log how many were dropped
+const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
+const droppedCount = limitedItems.length - finalItems.length;
+if (droppedCount > 0) {
+  console.log(`Filtered out ${droppedCount} low-content item(s)`);
 }
 
 // Write result once everything is fetched

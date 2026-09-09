@@ -15,6 +15,7 @@
     --text: #17171a;
     --text-muted: #6b6b72;
     --accent: #d1001f;
+    --nav-highlight: #d6d6db;
   }
 }
 
@@ -96,7 +97,7 @@ body {
 .series-nav button.is-active {
   color: var(--text);
   font-weight: 600;
-  background: var(--border);
+  background: var(--nav-highlight);
   border-radius: 8px;
 }
 
