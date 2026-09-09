@@ -10,20 +10,18 @@ import { CategoryNav } from "./components/CategoryNav.jsx";
 import { SERIES } from "./series.js";
 import { CATEGORIES } from "./series.js";
 
-const defaultCategoryBySeries = Object.fromEntries(
-  SERIES.map((s) => [s.id, "news"]),
-);
+// const defaultCategoryBySeries = Object.fromEntries(
+//   SERIES.map((s) => [s.id, "news"]),
+// );
 
 export function App() {
   const [currentSeries, setCurrentSeries] = useState(SERIES[0].id);
-  const [categoryBySeries, setCategoryBySeries] = useState(
-    defaultCategoryBySeries,
-  );
+  const [currentCategory, setCurrentCategory] = useState("news");
 
-  const currentCategory = categoryBySeries[currentSeries];
+  //const currentCategory = categoryBySeries[currentSeries];
 
   function selectCategory(categoryId) {
-    setCategoryBySeries((prev) => ({ ...prev, [currentSeries]: categoryId }));
+    setCurrentCategory(categoryId);
   }
 
   function goToCategory(direction) {
@@ -73,10 +71,7 @@ export function App() {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <SeriesPage
-          seriesId={currentSeries}
-          categoryId={currentCategory}
-        />
+        <SeriesPage seriesId={currentSeries} categoryId={currentCategory} />
       </main>
 
       <CategoryNav
@@ -95,10 +90,7 @@ export function App() {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <SeriesPage
-          seriesId={currentSeries}
-          categoryId={currentCategory}
-        />
+        <SeriesPage seriesId={currentSeries} categoryId={currentCategory} />
       </main>
       <CategoryNav
         seriesId={currentSeries}
@@ -106,5 +98,5 @@ export function App() {
         onSelect={selectCategory}
       />
     </div>
- );
+  );
 }
