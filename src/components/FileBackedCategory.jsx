@@ -4,6 +4,7 @@ import { StandingsList } from "./StandingsList.jsx";
 import { NextRaceCard } from "./NextRaceCard.jsx";
 import { NewsList } from "./NewsList.jsx";
 import { ArticleReader } from "./ArticleReader.jsx";
+import { getSeries, getSeasonLabel } from "../series.js";
 
 export function FileBackedCategory({ seriesId, categoryId }) {
   const [data, setData] = useState(undefined); // undefined = loading
@@ -18,6 +19,15 @@ export function FileBackedCategory({ seriesId, categoryId }) {
   if (data === undefined) return <p class="status-text">Loading…</p>;
 
   if (data === null) {
+    if (categoryId === "next-race") {
+      const series = getSeries(seriesId);
+      const season = getSeasonLabel(seriesId);
+      return (
+        <p class="status-text">
+          The {season} {series?.officialName ?? series?.label} season has ended.
+        </p>
+      );
+    }
     return (
       <p class="status-text">
         Data coming soon — this feed hasn't been scraped yet.
