@@ -10,7 +10,7 @@ export function NextRaceCard({ race }) {
     return <p class="status-text">No races left in the current season.</p>;
   }
 
-  const country = guessCountry(race.location);
+  const country = race.country || guessCountry(race.location);
   const flagUrl = country && getFlagUrl(country);
 
   return (

@@ -173,11 +173,13 @@ async function scrapeF3Schedule() {
     }
 
     const race = {
-      name: `F3 ${next.name}`,
+      name: `F2 ${next.name}`,
       circuit: city,
       location: country,
+      country,
       dateTime: next.dateTime,
     };
+    
     writeFileSync(OUTPUT_PATH, JSON.stringify(race, null, 2));
     console.log("Wrote f3-next-race.json:", race);
   } catch (e) {

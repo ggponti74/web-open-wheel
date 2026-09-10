@@ -112,6 +112,7 @@ function sessionDateTime(session, timeZone) {
 
 async function scrapeF2Schedule() {
   try {
+
     const res = await fetch(HOME_URL, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
     });
@@ -176,8 +177,10 @@ async function scrapeF2Schedule() {
       name: `F2 ${next.name}`,
       circuit: city,
       location: country,
+      country,
       dateTime: next.dateTime,
     };
+    
     writeFileSync(OUTPUT_PATH, JSON.stringify(race, null, 2));
     console.log("Wrote f2-next-race.json:", race);
   } catch (e) {
