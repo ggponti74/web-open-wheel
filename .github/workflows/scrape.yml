@@ -29,12 +29,16 @@ jobs:
         run: node ./scripts/scrape-f2-schedule.mjs
       - name: Scrape F2 Drivers
         run: node ./scripts/scrape-f2-drivers.mjs
+      - name: Scrape F2 Teams
+        run: node ./scripts/scrape-f2-teams.mjs
       - name: Scrape F3 News
         run: node ./scripts/scrape-f3-news.mjs
       - name: Scrape F3 Schedule
         run: node ./scripts/scrape-f3-schedule.mjs
       - name: Scrape F3 Drivers
         run: node ./scripts/scrape-f3-drivers.mjs
+      - name: Scrape F3 Teams
+        run: node ./scripts/scrape-f3-teams.mjs
       - name: Scrape IndyCar News
         run: node ./scripts/scrape-indycar-news.mjs
       - name: Scrape IndyCar Schedule
@@ -45,10 +49,12 @@ jobs:
         run: node ./scripts/scrape-indycar-manufacturers.mjs
       - name: Scrape FE News
         run: node ./scripts/scrape-fe-news.mjs
-#      - name: Scrape FE Schedule
-#        run: node ./scripts/scrape-fe-schedule.mjs
+      - name: Scrape FE Schedule
+        run: node ./scripts/scrape-fe-schedule.mjs
       - name: Scrape FE Drivers
         run: node ./scripts/scrape-fe-drivers.mjs
+      - name: Scrape FE Teams
+        run: node ./scripts/scrape-fe-teams.mjs
       - name: Commit and push updated data
         id: commit
         run: |
