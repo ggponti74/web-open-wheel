@@ -2,7 +2,7 @@
   {
     "position": 1,
     "name": "Campos Racing",
-    "points": 296
+    "points": 314
   },
   {
     "position": 2,
@@ -11,38 +11,38 @@
   },
   {
     "position": 3,
+    "name": "ART Grand Prix",
+    "points": 177
+  },
+  {
+    "position": 4,
     "name": "Van Amersfoort Racing",
     "points": 162
   },
   {
-    "position": 4,
-    "name": "ART Grand Prix",
-    "points": 157
-  },
-  {
     "position": 5,
     "name": "MP Motorsport",
-    "points": 138
+    "points": 162
   },
   {
     "position": 6,
     "name": "Rodin Motorsport",
-    "points": 121
+    "points": 146
   },
   {
     "position": 7,
     "name": "PREMA Racing",
-    "points": 68
+    "points": 75
   },
   {
     "position": 8,
-    "name": "DAMS Lucas Oil",
-    "points": 53
+    "name": "Hitech",
+    "points": 55
   },
   {
     "position": 9,
-    "name": "Hitech",
-    "points": 45
+    "name": "DAMS Lucas Oil",
+    "points": 53
   },
   {
     "position": 10,
