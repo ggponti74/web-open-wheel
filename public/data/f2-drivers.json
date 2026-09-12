@@ -7,7 +7,7 @@
   {
     "position": 2,
     "name": "R. Câmara",
-    "points": 166
+    "points": 169
   },
   {
     "position": 3,
@@ -17,12 +17,12 @@
   {
     "position": 4,
     "name": "A. Dunne",
-    "points": 118
+    "points": 120
   },
   {
     "position": 5,
     "name": "N. Leon",
-    "points": 114
+    "points": 119
   },
   {
     "position": 6,
@@ -42,22 +42,22 @@
   {
     "position": 9,
     "name": "L. van Hoepen",
-    "points": 66
+    "points": 72
   },
   {
     "position": 10,
+    "name": "M. Stenshorne",
+    "points": 66
+  },
+  {
+    "position": 11,
     "name": "T. Inthraphuvasak",
     "points": 63
   },
   {
-    "position": 11,
-    "name": "M. Stenshorne",
-    "points": 62
-  },
-  {
     "position": 12,
     "name": "R. Miyata",
-    "points": 44
+    "points": 55
   },
   {
     "position": 13,
@@ -91,18 +91,18 @@
   },
   {
     "position": 19,
+    "name": "E. Fittipaldi",
+    "points": 18
+  },
+  {
+    "position": 20,
     "name": "N. Varrone",
     "points": 15
   },
   {
-    "position": 20,
-    "name": "M. Boya",
-    "points": 12
-  },
-  {
     "position": 21,
-    "name": "E. Fittipaldi",
-    "points": 10
+    "name": "M. Boya",
+    "points": 13
   },
   {
     "position": 22,
