@@ -7,26 +7,26 @@
   {
     "position": 2,
     "name": "U. Ugochukwu",
-    "points": 126
+    "points": 129
   },
   {
     "position": 3,
-    "name": "E. Rivera",
-    "points": 76
+    "name": "T. Naël",
+    "points": 86
   },
   {
     "position": 4,
-    "name": "T. Naël",
-    "points": 75
+    "name": "E. Rivera",
+    "points": 81
   },
   {
     "position": 5,
-    "name": "B. Badoer",
-    "points": 71
+    "name": "T. Kato",
+    "points": 73
   },
   {
     "position": 6,
-    "name": "T. Kato",
+    "name": "B. Badoer",
     "points": 71
   },
   {
@@ -42,17 +42,17 @@
   {
     "position": 9,
     "name": "T. Taponen",
-    "points": 64
+    "points": 65
   },
   {
     "position": 10,
-    "name": "M. Gladysz",
-    "points": 54
+    "name": "B. Del Pino",
+    "points": 57
   },
   {
     "position": 11,
-    "name": "B. Del Pino",
-    "points": 50
+    "name": "M. Gladysz",
+    "points": 54
   },
   {
     "position": 12,
@@ -67,37 +67,37 @@
   {
     "position": 14,
     "name": "J. Nakamura",
-    "points": 39
+    "points": 43
   },
   {
     "position": 15,
+    "name": "J. Wharton",
+    "points": 38
+  },
+  {
+    "position": 16,
     "name": "Y. David",
     "points": 34
   },
   {
-    "position": 16,
+    "position": 17,
     "name": "E. Deligny",
     "points": 34
   },
   {
-    "position": 17,
+    "position": 18,
     "name": "N. Lacorte",
     "points": 33
   },
   {
-    "position": 18,
+    "position": 19,
     "name": "K. Le",
     "points": 30
   },
   {
-    "position": 19,
-    "name": "J. Wharton",
-    "points": 29
-  },
-  {
     "position": 20,
     "name": "A. Giusti",
-    "points": 23
+    "points": 29
   },
   {
     "position": 21,
@@ -111,42 +111,42 @@
   },
   {
     "position": 23,
+    "name": "A. Powell",
+    "points": 8
+  },
+  {
+    "position": 24,
     "name": "M. De Palo",
     "points": 7
   },
   {
-    "position": 24,
+    "position": 25,
     "name": "B. Benavides",
     "points": 6
   },
   {
-    "position": 25,
+    "position": 26,
     "name": "C. Ho",
     "points": 2
   },
   {
-    "position": 26,
+    "position": 27,
     "name": "F. Mclaughlin",
     "points": 2
   },
   {
-    "position": 27,
+    "position": 28,
     "name": "F. Barrichello",
     "points": 2
   },
   {
-    "position": 28,
+    "position": 29,
     "name": "J. Garfias",
     "points": 1
   },
   {
-    "position": 29,
-    "name": "N. Bhirombhakdi",
-    "points": 0
-  },
-  {
     "position": 30,
-    "name": "A. Powell",
+    "name": "N. Bhirombhakdi",
     "points": 0
   },
   {
