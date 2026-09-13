@@ -2,37 +2,37 @@
   {
     "position": 1,
     "name": "U. Ugochukwu",
-    "points": 141
+    "points": 159
   },
   {
     "position": 2,
     "name": "F. Slater",
-    "points": 141
+    "points": 145
   },
   {
     "position": 3,
-    "name": "T. Kato",
-    "points": 93
+    "name": "T. Taponen",
+    "points": 109
   },
   {
     "position": 4,
+    "name": "T. Kato",
+    "points": 105
+  },
+  {
+    "position": 5,
     "name": "T. Naël",
     "points": 88
   },
   {
-    "position": 5,
-    "name": "E. Rivera",
-    "points": 85
-  },
-  {
     "position": 6,
-    "name": "T. Taponen",
-    "points": 81
+    "name": "P. Clerot",
+    "points": 88
   },
   {
     "position": 7,
-    "name": "P. Clerot",
-    "points": 73
+    "name": "E. Rivera",
+    "points": 87
   },
   {
     "position": 8,
@@ -61,33 +61,33 @@
   },
   {
     "position": 13,
+    "name": "M. Colnaghi",
+    "points": 54
+  },
+  {
+    "position": 14,
     "name": "J. Nakamura",
     "points": 53
   },
   {
-    "position": 14,
-    "name": "M. Colnaghi",
-    "points": 44
+    "position": 15,
+    "name": "A. Giusti",
+    "points": 45
   },
   {
-    "position": 15,
+    "position": 16,
+    "name": "E. Deligny",
+    "points": 40
+  },
+  {
+    "position": 17,
     "name": "J. Wharton",
     "points": 39
   },
   {
-    "position": 16,
-    "name": "A. Giusti",
-    "points": 37
-  },
-  {
-    "position": 17,
-    "name": "Y. David",
-    "points": 34
-  },
-  {
     "position": 18,
-    "name": "E. Deligny",
-    "points": 34
+    "name": "Y. David",
+    "points": 35
   },
   {
     "position": 19,
