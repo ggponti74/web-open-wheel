@@ -7,37 +7,37 @@
   {
     "position": 2,
     "name": "Invicta Racing",
-    "points": 247
+    "points": 260
   },
   {
     "position": 3,
     "name": "Rodin Motorsport",
-    "points": 186
+    "points": 209
   },
   {
     "position": 4,
     "name": "MP Motorsport",
-    "points": 184
+    "points": 190
   },
   {
     "position": 5,
     "name": "ART Grand Prix",
-    "points": 151
+    "points": 159
   },
   {
     "position": 6,
+    "name": "DAMS Lucas Oil",
+    "points": 132
+  },
+  {
+    "position": 7,
     "name": "TRIDENT",
     "points": 110
   },
   {
-    "position": 7,
-    "name": "DAMS Lucas Oil",
-    "points": 103
-  },
-  {
     "position": 8,
     "name": "Hitech",
-    "points": 81
+    "points": 96
   },
   {
     "position": 9,
@@ -52,6 +52,6 @@
   {
     "position": 11,
     "name": "AIX Racing",
-    "points": 28
+    "points": 38
   }
 ]
