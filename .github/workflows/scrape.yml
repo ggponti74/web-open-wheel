@@ -23,6 +23,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Scrape F1 News
         run: node ./scripts/scrape-f1-news.mjs
+      - name: Scrape F1 Schedule
+        run: node ./scripts/scrape-f1-schedule.mjs
       - name: Scrape F2 News
         run: node ./scripts/scrape-f2-news.mjs
       - name: Scrape F2 Schedule
@@ -55,6 +57,8 @@ jobs:
         run: node ./scripts/scrape-fe-drivers.mjs
       - name: Scrape FE Teams
         run: node ./scripts/scrape-fe-teams.mjs
+      - name: Update maps
+        run: node ./scripts/fetch-race-maps.mjs
       - name: Commit and push updated data
         id: commit
         run: |
