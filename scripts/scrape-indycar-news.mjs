@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
-const MIN_EXCERPT_LENGTH = 100;
+const MIN_EXCERPT_LENGTH = 300;
 
 function isLowContent(excerpt) {
   if (!excerpt) return true;
@@ -11,6 +11,34 @@ function isLowContent(excerpt) {
 }
 
 const parser = new Parser();
+
+async function fetchExcerpt(url) {
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
+    });
+    const html = await res.text();
+    const dom = new JSDOM(html, { url });
+    const article = new Readability(dom.window.document).parse();
+    if (!article || !article.content) return null;
+
+    const markedHtml = article.content
+      .replace(/<\/(p|div|li|h[1-6])>/gi, "\n\n")
+      .replace(/<br\s*\/?>/gi, "\n\n");
+
+    const textDom = new JSDOM(`<div>${markedHtml}</div>`);
+    const paragraphs = textDom.window.document.body.textContent
+      .split(/\n\s*\n/)
+      .map((p) => p.replace(/\s+/g, " ").trim())
+      .filter(Boolean);
+
+    if (paragraphs.length === 0) return null;
+    return paragraphs.join("\n\n");
+  } catch (e) {
+    console.error(`  ⚠ excerpt fetch failed for ${url}: ${e.message}`);
+    return null;
+  }
+}
 
 function extractExcerpt(html) {
   if (!html) return null;
@@ -53,7 +81,7 @@ for (const url of sources) {
         link: i.link,
         pubDate: i.pubDate,
         source,
-        excerpt: extractExcerpt(i.content) || i.contentSnippet || i.description || null,
+        excerpt: null,
       });
     }
   } catch (e) {
@@ -62,24 +90,20 @@ for (const url of sources) {
 }
 
 // Pass 3: drop low-content items and log how many were dropped
+const limitedItems = allItems.slice(0, 25);
 const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = limitedItems.length - finalItems.length;
 if (droppedCount > 0) {
   console.log(`Filtered out ${droppedCount} low-content item(s)`);
 }
 
-// Sort newest first & limit top items
+// Pass 4: Sort newest first & limit top items
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-const limitedItems = allItems.slice(0, 25);
 
-/*
-
-// Pass 2: Fetch excerpts only for the 25 newest items
+// Pass 5: Fetch excerpts only for the 25 newest items
 for (const item of limitedItems) {
   item.excerpt = await fetchExcerpt(item.link);
 }
-
-*/
 
 // Write file once after all processing completes
 writeFileSync(

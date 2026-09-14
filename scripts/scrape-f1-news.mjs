@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
-const MIN_EXCERPT_LENGTH = 100;
+const MIN_EXCERPT_LENGTH = 300;
 
 function isLowContent(excerpt) {
   if (!excerpt) return true;

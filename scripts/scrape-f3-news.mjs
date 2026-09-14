@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
-const MIN_EXCERPT_LENGTH = 100;
+const MIN_EXCERPT_LENGTH = 300;
 
 function isLowContent(excerpt) {
   if (!excerpt) return true;
@@ -82,8 +82,8 @@ for (const url of sources) {
 
 
 // Pass 1: Sort newest first & limit top items
-allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 const limitedItems = allItems.slice(0, 25);
+allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
 // Pass 2: drop low-content items and log how many were dropped
 const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
