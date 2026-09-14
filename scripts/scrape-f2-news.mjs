@@ -3,6 +3,13 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
+const MIN_EXCERPT_LENGTH = 100;
+
+function isLowContent(excerpt) {
+  if (!excerpt) return true;
+  return excerpt.trim().length < MIN_EXCERPT_LENGTH;
+}
+
 const parser = new Parser();
 
 async function fetchExcerpt(url) {
@@ -82,14 +89,16 @@ for (const item of limitedItems) {
   item.excerpt = await fetchExcerpt(item.link);
 }
 
-/*
-
-// Pass 2: Fetch excerpts only for the 25 newest items
+// Pass 3: Fetch excerpts for the top items
 for (const item of limitedItems) {
   item.excerpt = await fetchExcerpt(item.link);
 }
 
-*/
+
+// Pass 4: Fetch excerpts only for the 25 newest items
+for (const item of limitedItems) {
+  item.excerpt = await fetchExcerpt(item.link);
+}
 
 // Write file once after all processing completes
 writeFileSync(

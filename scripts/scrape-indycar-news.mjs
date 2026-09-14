@@ -3,6 +3,13 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
+const MIN_EXCERPT_LENGTH = 100;
+
+function isLowContent(excerpt) {
+  if (!excerpt) return true;
+  return excerpt.trim().length < MIN_EXCERPT_LENGTH;
+}
+
 const parser = new Parser();
 
 function extractExcerpt(html) {
@@ -52,6 +59,13 @@ for (const url of sources) {
   } catch (e) {
     console.error(`  ⚠ failed to parse RSS feed ${url}: ${e.message}`);
   }
+}
+
+// Pass 3: drop low-content items and log how many were dropped
+const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
+const droppedCount = limitedItems.length - finalItems.length;
+if (droppedCount > 0) {
+  console.log(`Filtered out ${droppedCount} low-content item(s)`);
 }
 
 // Sort newest first & limit top items

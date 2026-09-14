@@ -3,6 +3,13 @@ import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
+const MIN_EXCERPT_LENGTH = 100;
+
+function isLowContent(excerpt) {
+  if (!excerpt) return true;
+  return excerpt.trim().length < MIN_EXCERPT_LENGTH;
+}
+
 const parser = new Parser();
 
 async function fetchExcerpt(url) {
@@ -73,11 +80,19 @@ for (const url of sources) {
   }
 }
 
-// Sort newest first & limit top items
+
+// Pass 1: Sort newest first & limit top items
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 const limitedItems = allItems.slice(0, 25);
 
-// Pass 2: Fetch excerpts for the top items
+// Pass 2: drop low-content items and log how many were dropped
+const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
+const droppedCount = limitedItems.length - finalItems.length;
+if (droppedCount > 0) {
+  console.log(`Filtered out ${droppedCount} low-content item(s)`);
+}
+
+// Pass 3: Fetch excerpts for the top items
 for (const item of limitedItems) {
   item.excerpt = await fetchExcerpt(item.link);
 }
