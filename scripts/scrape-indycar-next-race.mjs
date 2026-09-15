@@ -32,6 +32,16 @@ function parseDateTime(dateLabel, timeLabel, year) {
   return `${year}-${pad(month + 1)}-${pad(day)}T${pad(hour)}:${minute}:00${etOffsetForMonth(month)}`;
 }
 
+function deriveCityCountry(location) {
+  if (!location) return { city: null, country: null };
+  const parts = location.split(",").map((s) => s.trim());
+  const city = parts[0];
+  const regionPart = parts[1] ?? "";
+
+  const country = /^on(t(ario)?)?$/i.test(regionPart) ? "Canada" : "USA";
+  return { city, country };
+}
+
 async function scrapeIndyCarSchedule() {
   try {
     const res = await fetch(SCHEDULE_URL, {
@@ -62,7 +72,9 @@ async function scrapeIndyCarSchedule() {
     const year = new Date().getFullYear();
     const dateTime = dateLabel && timeLabel ? parseDateTime(dateLabel, timeLabel, year) : null;
 
-    const race = { name, circuit, location, dateTime };
+    const { city, country } = deriveCityCountry(location);
+    const race = { name, circuit, location, city, country, dateTime };
+    
     writeFileSync('public/data/indycar-next-race.json', JSON.stringify(race, null, 2));
     console.log('Wrote indycar-next-race.json:', race);
   } catch (e) {

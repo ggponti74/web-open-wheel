@@ -221,20 +221,12 @@ async function fetchStaticMap({
 async function main() {
   const cache = loadCache();
   for (const series of SERIES) {
-    const races = JSON.parse(
+    const raw = JSON.parse(
       readFileSync(`public/data/${series.id}-next-race.json`),
     );
-    for (const race of races) {
-      const entry = await resolveVenueGeo(race, cache);
-      await ensureMapImages(race, entry);
-    }
+    if (!raw) continue; // season ended / not found — skip this series this run
+    const entry = await resolveVenueGeo(raw, cache);
+    await ensureMapImages(raw, entry);
   }
   saveCache(cache);
 }
-
-main()
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });

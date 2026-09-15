@@ -35,6 +35,21 @@ const WEEKDAYS = [
   "Saturday",
 ];
 
+function sessionDateTime(session, timeZone) {
+  const dateInfo = nextDateForWeekday(session.weekday, timeZone);
+  if (!dateInfo) return null;
+  const [hour, minute] = session.startTime
+    ? session.startTime.split(":").map(Number)
+    : [12, 0];
+  return zonedTimeToUtcISO(
+    dateInfo.year,
+    dateInfo.month,
+    dateInfo.day,
+    hour,
+    minute,
+    timeZone,
+  );
+}
 // Converts a wall-clock date/time in a given IANA zone to a UTC ISO string,
 // using Node's built-in ICU data (no extra tz library needed).
 function zonedTimeToUtcISO(year, month, day, hour, minute, timeZone) {
@@ -96,23 +111,8 @@ function nextDateForWeekday(weekdayName, timeZone) {
   };
 }
 
-function sessionDateTime(session, timeZone) {
-  const dateInfo = nextDateForWeekday(session.weekday, timeZone);
-  if (!dateInfo) return null;
-  const [hour, minute] = session.startTime.split(":").map(Number);
-  return zonedTimeToUtcISO(
-    dateInfo.year,
-    dateInfo.month,
-    dateInfo.day,
-    hour,
-    minute,
-    timeZone,
-  );
-}
-
 async function scrapeF2Schedule() {
   try {
-
     const res = await fetch(HOME_URL, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
     });
@@ -150,10 +150,9 @@ async function scrapeF2Schedule() {
     for (let i = 0; i + 2 < children.length; i += 3) {
       const name = children[i].textContent.trim();
       const weekday = children[i + 1].textContent.trim();
-      const times = children[i + 2].querySelectorAll("time");
-      const startTime = times[0]?.textContent.trim();
-      if (name && weekday && startTime)
-        sessions.push({ name, weekday, startTime });
+      const timeText = children[i + 2].textContent.trim();
+      const startTime = /^\d{1,2}:\d{2}$/.test(timeText) ? timeText : null; // null = TBC/unknown
+      if (name && weekday) sessions.push({ name, weekday, startTime });
     }
 
     const racedSessions = sessions.filter((s) => {
@@ -176,11 +175,12 @@ async function scrapeF2Schedule() {
     const race = {
       name: `F2 ${next.name}`,
       circuit: city,
+      city, // ← add this line, mirrors race.city convention
       location: country,
       country,
       dateTime: next.dateTime,
     };
-    
+
     writeFileSync(OUTPUT_PATH, JSON.stringify(race, null, 2));
     console.log("Wrote f2-next-race.json:", race);
   } catch (e) {

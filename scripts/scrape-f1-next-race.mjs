@@ -16,12 +16,21 @@ async function main() {
     date: race.date,
   };
 
-  writeFileSync("public/data/f1-next-race.json", JSON.stringify([record], null, 2));
+  writeFileSync(
+    "public/data/f1-next-race.json",
+    JSON.stringify([record], null, 2),
+  );
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+async function main() {
+  const cache = loadCache();
+  for (const series of SERIES) {
+    const raw = JSON.parse(
+      readFileSync(`public/data/${series.id}-next-race.json`),
+    );
+    if (!raw) continue;
+    const entry = await resolveVenueGeo(raw, cache);
+    await ensureMapImages(raw, entry);
+  }
+  saveCache(cache);
+}
