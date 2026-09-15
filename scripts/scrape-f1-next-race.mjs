@@ -1,5 +1,6 @@
 // scripts/scrape-f1-schedule.mjs
 import { writeFileSync } from "fs";
+import { SERIES } from "../src/series.js";
 
 const BASE = "https://api.jolpi.ca/ergast/f1";
 
@@ -18,19 +19,14 @@ async function main() {
 
   writeFileSync(
     "public/data/f1-next-race.json",
-    JSON.stringify([record], null, 2),
+    JSON.stringify(record, null, 2),
   );
+
 }
 
-async function main() {
-  const cache = loadCache();
-  for (const series of SERIES) {
-    const raw = JSON.parse(
-      readFileSync(`public/data/${series.id}-next-race.json`),
-    );
-    if (!raw) continue;
-    const entry = await resolveVenueGeo(raw, cache);
-    await ensureMapImages(raw, entry);
-  }
-  saveCache(cache);
-}
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

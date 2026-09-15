@@ -1,8 +1,6 @@
-[
-  {
-    "city": "Baku",
-    "country": "Azerbaijan",
-    "raceName": "Azerbaijan Grand Prix",
-    "date": "2026-09-26"
-  }
-]
+{
+  "city": "Baku",
+  "country": "Azerbaijan",
+  "raceName": "Azerbaijan Grand Prix",
+  "date": "2026-09-26"
+}

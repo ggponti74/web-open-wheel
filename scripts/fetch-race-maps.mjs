@@ -217,16 +217,31 @@ async function fetchStaticMap({
   return Buffer.from(await res.arrayBuffer());
 }
 
-// --- entry point ---
 async function main() {
+  console.log("MAIN START");
   const cache = loadCache();
+  console.log("cache loaded:", cache);
   for (const series of SERIES) {
+    console.log("processing series:", series.id);
     const raw = JSON.parse(
       readFileSync(`public/data/${series.id}-next-race.json`),
     );
-    if (!raw) continue; // season ended / not found — skip this series this run
+    if (!raw) {
+      console.log(`${series.id}: no race data, skipping`);
+      continue;
+    }
     const entry = await resolveVenueGeo(raw, cache);
     await ensureMapImages(raw, entry);
   }
+  console.log("MAIN END, about to save cache:", cache);
   saveCache(cache);
+  console.log("cache saved");
 }
+
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+  
