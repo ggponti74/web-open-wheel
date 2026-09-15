@@ -1,8 +1,8 @@
-const VERSION = "1.1.__BUILD_VERSION__.C";
+const VERSION = "1.1.__BUILD_VERSION__.D";
 
 import { useRef } from "preact/hooks";
 import { useState } from "preact/hooks";
-import { useEffect } from "preact/hooks";
+//import { useEffect } from "preact/hooks";
 import { SeriesPage } from "./pages/SeriesPage.jsx";
 import { SeriesNav } from "./components/SeriesNav.jsx";
 import { CategoryNav } from "./components/CategoryNav.jsx";
