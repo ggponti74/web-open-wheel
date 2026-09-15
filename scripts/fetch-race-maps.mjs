@@ -218,16 +218,12 @@ async function fetchStaticMap({
 }
 
 async function main() {
-  console.log("MAIN START");
   const cache = loadCache();
-  console.log("cache loaded:", cache);
   for (const series of SERIES) {
-    console.log("processing series:", series.id);
     const raw = JSON.parse(
       readFileSync(`public/data/${series.id}-next-race.json`),
     );
     if (!raw) {
-      console.log(`${series.id}: no race data, skipping`);
       continue;
     }
     const entry = await resolveVenueGeo(raw, cache);
