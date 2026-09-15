@@ -1,4 +1,4 @@
-const VERSION = "1.1.__BUILD_VERSION__.A";
+const VERSION = "1.1.__BUILD_VERSION__.B";
 
 import { useRef } from "preact/hooks";
 import { useState } from "preact/hooks";
