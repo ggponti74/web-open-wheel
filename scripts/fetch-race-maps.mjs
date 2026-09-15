@@ -1,6 +1,10 @@
 import { SERIES } from "../src/series.js";
-
 import { readFileSync, writeFileSync, existsSync } from "fs";
+import sharp from "sharp";
+
+const MAPBOX_USERNAME = "ggponti74";
+const LIGHT_STYLE_ID = "cmu32mlz4009r01p73i8bbi7t";
+const DARK_STYLE_ID = "cmu32mwnm009s01p75fev0fzf";
 
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 const CACHE_PATH = "public/data/venue-geo-cache.json";
@@ -24,17 +28,10 @@ async function ensureMapImages(race, entry) {
 
   for (const theme of ["light", "dark"]) {
     const outPath = `${OUTPUT_DIR}/${iso}-${citySlug}-${theme}.jpg`;
-    if (existsSync(outPath)) continue; // already downloaded
+    if (existsSync(outPath)) continue;
 
-    const rawJpg = await fetchStaticMap({ bbox: boundaryBbox, theme });
-    const finalJpg = await compositeCityDot(rawJpg, {
-      cityCenter,
-      bbox: boundaryBbox,
-      cityName: race.city,
-      theme,
-    });
-
-    writeFileSync(outPath, finalJpg);
+    const jpg = await fetchStaticMap({ bbox: boundaryBbox, cityCenter, theme });
+    writeFileSync(outPath, jpg);
   }
 }
 
@@ -57,11 +54,8 @@ function project(lon, lat, bbox, pixelWidth, pixelHeight) {
   return { x: lonToX(lon), y };
 }
 
-async function compositeCityDot(
-  jpgBuffer,
-  { cityCenter, bbox, cityName, theme },
-) {
-  const pixelWidth = MAP_WIDTH * 2; // @2x actual pixels
+async function compositeCityDot(jpgBuffer, { cityCenter, bbox, theme }) {
+  const pixelWidth = MAP_WIDTH * 2;
   const pixelHeight = MAP_HEIGHT * 2;
 
   const { x, y } = project(
@@ -72,14 +66,12 @@ async function compositeCityDot(
     pixelHeight,
   );
 
-  const dotColor = theme === "dark" ? "#ffffff" : "#111111"; // TODO: match --accent
-  const textColor = dotColor;
-  const dotRadius = 6;
+  const ringColor = theme === "dark" ? "#ffffff" : "#111111";
+  const ringRadius = 14;
 
   const overlaySvg = `
     <svg width="${pixelWidth}" height="${pixelHeight}" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="${x}" cy="${y}" r="${dotRadius}" fill="${dotColor}" stroke="#00000055" stroke-width="2"/>
-      <text x="${x + dotRadius + 6}" y="${y + 4}" font-family="sans-serif" font-size="24" fill="${textColor}" stroke="${theme === "dark" ? "#000" : "#fff"}" stroke-width="0.5" paint-order="stroke">${cityName}</text>
+      <circle cx="${x}" cy="${y}" r="${ringRadius}" fill="none" stroke="${ringColor}" stroke-width="3"/>
     </svg>
   `;
 
@@ -93,10 +85,11 @@ function centerBboxOnCity(
   countryBbox,
   cityCenter,
   minSpan = MIN_BBOX_SPAN_DEG,
+  paddingFactor = 3.0,
 ) {
   const [minLon, minLat, maxLon, maxLat] = countryBbox;
-  const lonSpan = Math.max(maxLon - minLon, minSpan);
-  const latSpan = Math.max(maxLat - minLat, minSpan);
+  const lonSpan = Math.max((maxLon - minLon) * paddingFactor, minSpan);
+  const latSpan = Math.max((maxLat - minLat) * paddingFactor, minSpan);
 
   const [cityLon, cityLat] = cityCenter;
 
@@ -110,16 +103,19 @@ function centerBboxOnCity(
 
 // --- cache helpers ---
 function loadCache() {
-  /* TODO: read + JSON.parse, {} if missing */
+  if (existsSync(CACHE_PATH)) {
+    return JSON.parse(readFileSync(CACHE_PATH, "utf-8"));
+  }
+  return {};
 }
 
 function saveCache(cache) {
-  /* TODO: writeFileSync */
+  writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
 // --- geocoding ---
 async function geocodeCity(cityCountryStr) {
-  const url = `https://api.mapbox.com/search/geocde/v6/forward?q=${encodeURIComponent(cityCountryStr)}&types=place&limit=1&access_token=${MAPBOX_TOKEN}`;
+  const url = `https://api.mapbox.com/search/geocode/v6/forward?q=${encodeURIComponent(cityCountryStr)}&types=place&limit=1&access_token=${MAPBOX_TOKEN}`;
   const res = await fetch(url);
   if (!res.ok)
     throw new Error(
@@ -140,7 +136,6 @@ async function geocodeCity(cityCountryStr) {
 }
 
 async function geocodeBoundary({ iso, level }) {
-  // level: 'country' for now; 'region' reserved for IndyCar later
   const url = `https://api.mapbox.com/search/geocode/v6/forward?q=${encodeURIComponent(iso)}&types=${level}&limit=1&access_token=${MAPBOX_TOKEN}`;
   const res = await fetch(url);
   if (!res.ok)
@@ -148,9 +143,9 @@ async function geocodeBoundary({ iso, level }) {
   const data = await res.json();
 
   const feature = data.features?.[0];
-  if (!feature?.bbox) throw new Error(`No bbox in geocode result for "${iso}"`);
-
-  return { bbox: feature.bbox };
+  if (!feature?.properties?.bbox)
+    throw new Error(`No bbox in geocode result for "${iso}"`);
+  return { bbox: feature.properties.bbox };
 }
 
 // --- bbox adjustment ---
@@ -196,15 +191,29 @@ async function resolveVenueGeo(race, cache) {
 }
 
 // --- image fetch + composite ---
-async function fetchStaticMap({ bbox, theme, width = 600, height = 400 }) {
+async function fetchStaticMap({
+  bbox,
+  cityCenter,
+  theme,
+  width = 600,
+  height = 400,
+}) {
   const styleId = theme === "dark" ? DARK_STYLE_ID : LIGHT_STYLE_ID;
   const [minLon, minLat, maxLon, maxLat] = bbox;
+  const [lon, lat] = cityCenter;
 
-  const url = `https://api.mapbox.com/styles/v1/${MAPBOX_USERNAME}/${styleId}/static/[${minLon},${minLat},${maxLon},${maxLat}]/${width}x${height}@2x?access_token=${MAPBOX_TOKEN}`;
+  const markerColor = theme === "dark" ? "ffffff" : "111111";
+  const marker = `pin-s+${markerColor}(${lon},${lat})`;
+
+  const url = `https://api.mapbox.com/styles/v1/${MAPBOX_USERNAME}/${styleId}/static/${marker}/[${minLon},${minLat},${maxLon},${maxLat}]/${width}x${height}@2x?access_token=${MAPBOX_TOKEN}`;
 
   const res = await fetch(url);
-  if (!res.ok)
-    throw new Error(`fetchStaticMap failed (${theme}): ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(
+      `fetchStaticMap failed (${theme}): ${res.status} — ${body}`,
+    );
+  }
   return Buffer.from(await res.arrayBuffer());
 }
 
@@ -212,7 +221,9 @@ async function fetchStaticMap({ bbox, theme, width = 600, height = 400 }) {
 async function main() {
   const cache = loadCache();
   for (const series of SERIES) {
-    const races = JSON.parse(readFileSync(`public/data/${series.id}-schedule.json`));
+    const races = JSON.parse(
+      readFileSync(`public/data/${series.id}-next-race.json`),
+    );
     for (const race of races) {
       const entry = await resolveVenueGeo(race, cache);
       await ensureMapImages(race, entry);

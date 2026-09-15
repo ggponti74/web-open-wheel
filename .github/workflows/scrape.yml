@@ -24,11 +24,11 @@ jobs:
       - name: Scrape F1 News
         run: node ./scripts/scrape-f1-news.mjs
       - name: Scrape F1 Schedule
-        run: node ./scripts/scrape-f1-schedule.mjs
+        run: node ./scripts/scrape-f1-next-race.mjs
       - name: Scrape F2 News
         run: node ./scripts/scrape-f2-news.mjs
       - name: Scrape F2 Schedule
-        run: node ./scripts/scrape-f2-schedule.mjs
+        run: node ./scripts/scrape-f2-next-race.mjs
       - name: Scrape F2 Drivers
         run: node ./scripts/scrape-f2-drivers.mjs
       - name: Scrape F2 Teams
@@ -36,7 +36,7 @@ jobs:
       - name: Scrape F3 News
         run: node ./scripts/scrape-f3-news.mjs
       - name: Scrape F3 Schedule
-        run: node ./scripts/scrape-f3-schedule.mjs
+        run: node ./scripts/scrape-f3-next-race.mjs
       - name: Scrape F3 Drivers
         run: node ./scripts/scrape-f3-drivers.mjs
       - name: Scrape F3 Teams
@@ -44,7 +44,7 @@ jobs:
       - name: Scrape IndyCar News
         run: node ./scripts/scrape-indycar-news.mjs
       - name: Scrape IndyCar Schedule
-        run: node ./scripts/scrape-indycar-schedule.mjs
+        run: node ./scripts/scrape-indycar-next-race.mjs
       - name: Scrape IndyCar Drivers
         run: node ./scripts/scrape-indycar-drivers.mjs
       - name: Scrape IndyCar Manufacturers
@@ -52,7 +52,7 @@ jobs:
       - name: Scrape FE News
         run: node ./scripts/scrape-fe-news.mjs
       - name: Scrape FE Schedule
-        run: node ./scripts/scrape-fe-schedule.mjs
+        run: node ./scripts/scrape-fe-next-race.mjs
       - name: Scrape FE Drivers
         run: node ./scripts/scrape-fe-drivers.mjs
       - name: Scrape FE Teams

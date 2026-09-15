@@ -16,7 +16,7 @@ async function main() {
     date: race.date,
   };
 
-  writeFileSync("public/data/f1-schedule.json", JSON.stringify([record], null, 2));
+  writeFileSync("public/data/f1-next-race.json", JSON.stringify([record], null, 2));
 }
 
 main()
