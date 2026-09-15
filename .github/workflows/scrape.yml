@@ -57,8 +57,8 @@ jobs:
         run: node ./scripts/scrape-fe-drivers.mjs
       - name: Scrape FE Teams
         run: node ./scripts/scrape-fe-teams.mjs
-#      - name: Update maps
-#        run: node ./scripts/fetch-race-maps.mjs
+      - name: Fetch next race maps
+        run: node ./scripts/fetch-race-maps.mjs
       - name: Commit and push updated data
         id: commit
         run: |
