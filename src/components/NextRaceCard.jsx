@@ -14,8 +14,8 @@ export function NextRaceCard({ race }) {
   const country = race.country || guessCountry(race.location);
   const flagUrl = country && getFlagUrl(country);
 
-          city={race.Circuit.Location.locality}
-        country={race.Circuit.Location.country}
+          city={race.Circuit.Location.locality};
+        country={race.Circuit.Location.country};
 
 console.log(city);
 console.log(country);
