@@ -27,8 +27,8 @@ console.log(country);
       {race.location && <p>{race.location}</p>}
       {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
       <VenueMap
-        {race.Circuit.Location.locality}
-        {race.Circuit.Location.country}
+        city={race.Circuit.Location.locality}
+        country={race.Circuit.Location.country}
       />
     </div>
   );
