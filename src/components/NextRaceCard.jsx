@@ -14,9 +14,6 @@ export function NextRaceCard({ race }) {
   const country = race.country || guessCountry(race.location);
   const flagUrl = country && getFlagUrl(country);
 
-console.log(city);
-console.log(country);
-
   return (
     <div class="next-race-card">
       <h2>
