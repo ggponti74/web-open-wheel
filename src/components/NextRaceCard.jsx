@@ -1,5 +1,4 @@
 import { getFlagUrl } from "../utils/countryFlags.js";
-import { VenueMap } from "./VenueMap.jsx";
 
 function guessCountry(location) {
   if (!location) return null;
@@ -23,10 +22,6 @@ export function NextRaceCard({ race }) {
       {race.circuit && <p>{race.circuit}</p>}
       {race.location && <p>{race.location}</p>}
       {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
-      <VenueMap
-        city={race.Circuit.Location.locality}
-        country={race.Circuit.Location.country}
-      />
     </div>
   );
 }
