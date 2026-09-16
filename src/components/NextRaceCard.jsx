@@ -14,9 +14,6 @@ export function NextRaceCard({ race }) {
   const country = race.country || guessCountry(race.location);
   const flagUrl = country && getFlagUrl(country);
 
-          city={race.Circuit.Location.locality};
-        country={race.Circuit.Location.country};
-
 console.log(city);
 console.log(country);
 
@@ -30,7 +27,8 @@ console.log(country);
       {race.location && <p>{race.location}</p>}
       {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
       <VenueMap
-
+        {race.Circuit.Location.locality}
+        {race.Circuit.Location.country}
       />
     </div>
   );
