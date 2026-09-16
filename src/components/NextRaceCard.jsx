@@ -1,8 +1,9 @@
-import { getFlagUrl } from '../utils/countryFlags.js';
+import { getFlagUrl } from "../utils/countryFlags.js";
+import { VenueMap } from "./VenueMap.jsx";
 
 function guessCountry(location) {
   if (!location) return null;
-  return location.includes('Ontario') ? 'Canada' : 'USA';
+  return location.includes("Ontario") ? "Canada" : "USA";
 }
 
 export function NextRaceCard({ race }) {
@@ -16,19 +17,16 @@ export function NextRaceCard({ race }) {
   return (
     <div class="next-race-card">
       <h2>
-        {flagUrl && (
-          <img
-            src={flagUrl}
-            alt={country}
-            width="24"
-            height="18"
-          />
-        )}{' '}
+        {flagUrl && <img src={flagUrl} alt={country} width="24" height="18" />}{" "}
         {race.name}
       </h2>
       {race.circuit && <p>{race.circuit}</p>}
       {race.location && <p>{race.location}</p>}
       {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
+      <VenueMap
+        city={race.Circuit.Location.locality}
+        country={race.Circuit.Location.country}
+      />
     </div>
   );
 }
