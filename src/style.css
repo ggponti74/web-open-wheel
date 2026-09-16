@@ -263,5 +263,5 @@ body {
   height: auto;
   display: block;
   border-radius: 8px; /* optional, matches card styling if you have rounded corners elsewhere */
-  margin-top: 12px; /* tune to taste */
+  margin-top: 24; /* tune to taste */
 }
