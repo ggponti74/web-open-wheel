@@ -85,7 +85,7 @@ function centerBboxOnCity(
   countryBbox,
   cityCenter,
   minSpan = MIN_BBOX_SPAN_DEG,
-  paddingFactor = 2.5,
+  paddingFactor = 2.4,
 ) {
   const [minLon, minLat, maxLon, maxLat] = countryBbox;
   const lonSpan = Math.max((maxLon - minLon) * paddingFactor, minSpan);
