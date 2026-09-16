@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'preact/hooks';
 import { getNextRace } from '../api/f1.js';
-//import { getFlagEmoji } from '../utils/countryFlags.js';
 import { getFlagUrl } from '../utils/countryFlags.js';
 import { VenueMap } from "./VenueMap.jsx";
 
