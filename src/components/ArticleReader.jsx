@@ -50,6 +50,7 @@ export function ArticleReader({ article, onClose, onPrev, onNext }) {
 
   const openExternal = () => {
     window.open(article.link, "_blank", "noopener,noreferrer");
+    onClose && onClose();
   };
 
   let rootSite = "";
