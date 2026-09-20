@@ -59,12 +59,17 @@ jobs:
         run: node ./scripts/scrape-fe-teams.mjs
       - name: Fetch next race maps
         run: node ./scripts/fetch-race-maps.mjs
+      - name: Stamp last-updated time
+        run: |
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          sed -i "s|^const __UPDATE_TIMESTAMP__ = \".*\";|const __UPDATE_TIMESTAMP__ = \"$NOW\";|" src/components/LastUpdated.jsx
       - name: Commit and push updated data
         id: commit
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "ggponti74"
+          git config user.email "ggponti74@hotmail.com"
           git add public/data/*.json
+          git add public/data/*.json src/components/LastUpdated.jsx
           if git diff --staged --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
