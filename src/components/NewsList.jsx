@@ -22,5 +22,6 @@ export function NewsList({ items, onSelect }) {
       ))}
     </ul>
     <LastUpdated />
+    </>
   );
 }
