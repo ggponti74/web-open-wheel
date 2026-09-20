@@ -1,3 +1,5 @@
+import { LastUpdated } from "./LastUpdated.jsx";
+
 export function NewsList({ items, onSelect }) {
   return (
     <ul class="news-list">
@@ -19,5 +21,6 @@ export function NewsList({ items, onSelect }) {
         </li>
       ))}
     </ul>
+    <LastUpdated />
   );
 }
