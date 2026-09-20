@@ -265,3 +265,9 @@ body {
   border-radius: 8px; /* optional, matches card styling if you have rounded corners elsewhere */
   margin-top: 36; /* tune to taste */
 }
+
+.last-updated {
+  margin: 24px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
