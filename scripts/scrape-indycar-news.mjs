@@ -64,7 +64,6 @@ async function parseFeed(url) {
 
 const sources = [
   "https://feedfry.com/rss/11f1a57b543724cd8cd7e8b18079dc2c",
-  "https://racer.com/category/indycar/feed/",
   "https://www.yardbarker.com/rss/sport_merged/15",
 ];
 
