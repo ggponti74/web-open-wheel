@@ -81,9 +81,6 @@ for (const item of candidates) {
 // promo stubs, etc).
 const finalItems = candidates.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = candidates.length - finalItems.length;
-if (droppedCount > 0) {
-  console.log(`Filtered out ${droppedCount} low-content item(s)`);
-}
 
 writeFileSync(
   "public/data/fe-news.json",
