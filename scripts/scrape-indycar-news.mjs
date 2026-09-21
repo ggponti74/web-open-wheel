@@ -63,7 +63,7 @@ async function parseFeed(url) {
 }
 
 const sources = [
-  "https://www.indycar.com/news/archive/latest",
+  "https://www.foxnews.com/rss.xml?tag=indycar",
   "https://feedfry.com/rss/11f1a57b543724cd8cd7e8b18079dc2c",
   "https://www.yardbarker.com/rss/sport_merged/15",
 ];
