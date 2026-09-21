@@ -71,21 +71,18 @@ const limitedItems = allItems.slice(0, 25);
 // Pass 2: drop low-content items and log how many were dropped
 const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = limitedItems.length - finalItems.length;
-if (droppedCount > 0) {
-  console.log(`Filtered out ${droppedCount} low-content item(s)`);
-}
 
 // Pass 3: Fetch excerpts for the top 25 items
-for (const item of limitedItems) {
+for (const item of finalItems) {
   item.excerpt = await fetchExcerpt(item.link);
 }
 
 // Write result once everything is fetched
 writeFileSync(
   "public/data/f1-news.json",
-  JSON.stringify(limitedItems, null, 2),
+  JSON.stringify(finalItems, null, 2),
 );
 
-console.log(`Successfully wrote ${limitedItems.length} items to f1-news.json`);
+console.log(`Successfully wrote ${finalItems.length} items to f1-news.json`);
 
 process.exit(0);
