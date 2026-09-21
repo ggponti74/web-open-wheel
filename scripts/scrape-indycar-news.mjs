@@ -63,6 +63,7 @@ async function parseFeed(url) {
 }
 
 const sources = [
+  "https://www.indycar.com/news/archive/latest",
   "https://feedfry.com/rss/11f1a57b543724cd8cd7e8b18079dc2c",
   "https://www.yardbarker.com/rss/sport_merged/15",
 ];
@@ -92,9 +93,6 @@ for (const url of sources) {
 const limitedItems = allItems.slice(0, 25);
 const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = limitedItems.length - finalItems.length;
-if (droppedCount > 0) {
-  console.log(`Filtered out ${droppedCount} low-content item(s)`);
-}
 
 // Pass 4: Sort newest first & limit top items
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
