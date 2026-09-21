@@ -20,9 +20,6 @@ for (const item of candidates) {
 // Pass 3: drop low-content items (app promo stubs, paywalled snippets, etc).
 const finalItems = candidates.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = candidates.length - finalItems.length;
-if (droppedCount > 0) {
-  console.log(`Filtered out ${droppedCount} low-content item(s)`);
-}
 
 writeFileSync(
   "public/data/f2-news.json",
