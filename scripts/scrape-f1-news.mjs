@@ -69,13 +69,16 @@ for (const url of sources) {
 allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 const limitedItems = allItems.slice(0, 25);
 
-// Pass 2: drop low-content items and log how many were dropped
+// Pass 2: fetch excerpts for the top 25 items
+for (const item of limitedItems) {
+  item.excerpt = await fetchExcerpt(item.link);
+}
+
+// Pass 3: drop low-content items
 const finalItems = limitedItems.filter((item) => !isLowContent(item.excerpt));
 const droppedCount = limitedItems.length - finalItems.length;
-
-// Pass 3: Fetch excerpts for the top 25 items
-for (const item of finalItems) {
-  item.excerpt = await fetchExcerpt(item.link);
+if (droppedCount > 0) {
+  console.log(`Filtered out ${droppedCount} low-content item(s)`);
 }
 
 // Write result once everything is fetched
