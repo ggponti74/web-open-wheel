@@ -1,7 +1,7 @@
 import Parser from "rss-parser";
 import { writeFileSync } from "fs";
 import { JSDOM } from "jsdom";
-import { fetchExcerpt, isLowContent } from "./lib/news-excerpt.mjs";
+import { fetchExcerpt, isLowContent, isLabelledTitle } from "./lib/news-excerpt.mjs";
 
 const MAX_ITEMS = 25;
 const UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
