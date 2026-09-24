@@ -21,9 +21,10 @@ export function NextRaceCard({ race }) {
         {race.name}
       </h2>
       {race.circuit && <p>{race.circuit}</p>}
-      {race.location && <p>{race.location}</p>}
-      {race.city && country />}
-      {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
+      <p>
+        {race.Circuit.Location.locality}, {race.Circuit.Location.country}
+      </p>
+      <p>{dateTime.toLocaleString()}</p>
       <VenueMap
         city={race.Circuit.Location.locality}
         country={race.Circuit.Location.country}
