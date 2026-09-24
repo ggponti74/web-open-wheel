@@ -2,7 +2,7 @@ import Parser from "rss-parser";
 import { writeFileSync } from "fs";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
-import { fetchExcerpt, isLabelledTitle } from "./news-excerpt.mjs";
+import { isLabelledTitle } from "./lib/news-excerpt.mjs";
 
 const MIN_EXCERPT_LENGTH = 300;
 
