@@ -7,6 +7,7 @@
 // issue as the F2/F3 standings tables), so we select on the href pattern
 // rather than any class.
 import { JSDOM } from "jsdom";
+import { isLabelledTitle } from "./news-excerpt.mjs";
 
 const DEFAULT_UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
 
@@ -30,7 +31,7 @@ function extractArticleLinks(html, baseUrl) {
     }
   }
   // Map preserves insertion order, which matches the page's newest-first order.
-  return Array.from(byHref.values());
+  return Array.from(byHref.values()).filter((i) => !isLabelledTitle(i.title));
 }
 
 // Collects up to maxItems unique {title, link} entries across listing pages,
