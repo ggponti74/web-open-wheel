@@ -6,6 +6,15 @@ import { JSDOM } from "jsdom";
 
 const DEFAULT_UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
 
+// Drops "label" headlines like "QUALIFYING: …", "GALLERY: …", "TEAM RADIO: …".
+// Requires 4+ characters before the colon so real prefixes like "F1:", "F2:",
+// "FIA:" and "FE:" are kept.
+const LABEL_PREFIX_RE = /^[A-Z][A-Z0-9 &'’\-\/!?.,()]{3,}:/;
+
+export function isLabelledTitle(title) {
+  return !!title && LABEL_PREFIX_RE.test(title.trim());
+}
+
 export function isLowContent(excerpt, minLength = 300) {
   if (!excerpt) return true;
   return excerpt.trim().length < minLength;
