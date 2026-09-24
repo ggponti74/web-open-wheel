@@ -174,6 +174,19 @@ body {
   border-radius: 2px;
 }
 
+.next-race-session {
+  margin: -2px 0 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.next-race-session--sprint {
+  color: var(--accent);
+}
+
 .news-list {
   list-style: none;
   margin: 8px 0 0;
