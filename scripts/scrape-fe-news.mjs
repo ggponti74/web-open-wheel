@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import { JSDOM } from "jsdom";
-import { fetchExcerpt, isLowContent } from "./lib/news-excerpt.mjs";
+import { fetchExcerpt, isLowContent, isLabelledTitle } from "./lib/news-excerpt.mjs";
 
 // fiaformulae.com is a different platform from the FIA F2/F3 sites (Contentful-
 // backed, not the same CMS), so this doesn't reuse fia-news-listing.mjs — that
@@ -37,7 +37,7 @@ function extractArticleLinks(html) {
       byHref.set(absHref, { title, link: absHref });
     }
   }
-  return Array.from(byHref.values());
+  return Array.from(byHref.values()).filter((i) => !isLabelledTitle(i.title));
 }
 
 async function fetchListingPage(pageNum) {
