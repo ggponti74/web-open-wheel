@@ -66,8 +66,9 @@ for (const url of sources) {
 }
 
 // Sort newest first & limit
-allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-const limitedItems = allItems.slice(0, 25);
+const limitedItems = allItems
+  .filter((item) => !isLabelledTitle(item.title))
+  .slice(0, 25);
 
 // Pass 2: fetch excerpts for the top 25 items
 for (const item of limitedItems) {
