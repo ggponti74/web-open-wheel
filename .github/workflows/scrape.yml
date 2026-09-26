@@ -2,7 +2,7 @@ name: Hourly Script
 
 on:
   schedule:
-    - cron: '15 */4 * * *  ' # every 4 hours hour at minute 15
+    - cron: '15 */4 * * ' # every 4 hours hour at minute 15
   workflow_dispatch:        # allows manual trigger too
 
 concurrency:
@@ -58,6 +58,8 @@ jobs:
       - name: Scrape FE Teams
         run: node ./scripts/scrape-fe-teams.mjs
       - name: Fetch next race maps
+        env:
+            MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
         run: node ./scripts/fetch-race-maps.mjs
       - name: Stamp last-updated time
         run: |
