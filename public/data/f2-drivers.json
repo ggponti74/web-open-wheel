@@ -1,116 +1,116 @@
 [
   {
-    "position": 1,
-    "name": "R. Câmara",
-    "points": 182
-  },
-  {
     "position": 2,
-    "name": "N. Tsolov",
-    "points": 181
-  },
-  {
-    "position": 3,
-    "name": "A. Dunne",
-    "points": 174
+    "name": "R. Câmara",
+    "points": 207
   },
   {
     "position": 4,
-    "name": "G. Mini",
-    "points": 161
-  },
-  {
-    "position": 5,
-    "name": "D. Beganovic",
-    "points": 131
+    "name": "N. Tsolov",
+    "points": 200
   },
   {
     "position": 6,
-    "name": "N. Leon",
-    "points": 129
-  },
-  {
-    "position": 7,
-    "name": "M. Stenshorne",
-    "points": 93
+    "name": "A. Dunne",
+    "points": 189
   },
   {
     "position": 8,
+    "name": "G. Mini",
+    "points": 163
+  },
+  {
+    "position": 10,
+    "name": "D. Beganovic",
+    "points": 137
+  },
+  {
+    "position": 12,
+    "name": "N. Leon",
+    "points": 133
+  },
+  {
+    "position": 14,
+    "name": "M. Stenshorne",
+    "points": 107
+  },
+  {
+    "position": 16,
     "name": "J. Dürksen",
     "points": 90
   },
   {
-    "position": 9,
+    "position": 18,
     "name": "K. Maini",
     "points": 90
   },
   {
-    "position": 10,
+    "position": 20,
     "name": "L. van Hoepen",
-    "points": 80
+    "points": 90
   },
   {
-    "position": 11,
+    "position": 22,
     "name": "T. Inthraphuvasak",
     "points": 71
   },
   {
-    "position": 12,
+    "position": 24,
     "name": "R. Miyata",
     "points": 70
   },
   {
-    "position": 13,
+    "position": 26,
     "name": "R. Villagomez",
     "points": 42
   },
   {
-    "position": 14,
+    "position": 28,
     "name": "J. Bennett",
     "points": 38
   },
   {
-    "position": 15,
+    "position": 30,
     "name": "O. Goethe",
     "points": 37
   },
   {
-    "position": 16,
+    "position": 32,
     "name": "R. Bilinski",
-    "points": 35
+    "points": 36
   },
   {
-    "position": 17,
+    "position": 34,
     "name": "S. Montoya",
     "points": 30
   },
   {
-    "position": 18,
+    "position": 36,
     "name": "E. Fittipaldi",
     "points": 28
   },
   {
-    "position": 19,
+    "position": 38,
     "name": "C. Herta",
     "points": 26
   },
   {
-    "position": 20,
+    "position": 40,
+    "name": "M. Boya",
+    "points": 21
+  },
+  {
+    "position": 42,
     "name": "N. Varrone",
     "points": 15
   },
   {
-    "position": 21,
-    "name": "M. Boya",
-    "points": 13
-  },
-  {
-    "position": 22,
+    "position": 44,
     "name": "C. Shields",
     "points": 10
   },
   {
-    "position": 23,
+    "position": 46,
     "name": "H. Yamakoshi",
     "points": 2
   }
