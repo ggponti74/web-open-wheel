@@ -2,7 +2,7 @@ name: Hourly Script
 
 on:
   schedule:
-    - cron: '15 */4 * * ' # every 4 hours hour at minute 15
+    - cron: '15 */4 * * *' # every 4 hours hour at minute 15
   workflow_dispatch:        # allows manual trigger too
 
 concurrency:
