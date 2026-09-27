@@ -7,7 +7,7 @@ async function scrapeFEDrivers() {
   try {
     const res = await fetch(API_URL, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; web-open-wheel/1.0)',
+        'User-Agent': 'Mozilla/5.0 (compatible; racing-news/1.0)',
         'Origin': 'https://www.fiaformulae.com',
         'Referer': 'https://www.fiaformulae.com/',
         'Accept': 'application/json',

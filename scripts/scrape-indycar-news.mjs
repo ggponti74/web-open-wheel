@@ -4,7 +4,7 @@ import { JSDOM } from "jsdom";
 import { fetchExcerpt, isLowContent, isLabelledTitle } from "./lib/news-excerpt.mjs";
 
 const MAX_ITEMS = 25;
-const UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
+const UA = "Mozilla/5.0 (compatible; racing-news/1.0)";
 const parser = new Parser();
 
 async function parseFeed(url) {

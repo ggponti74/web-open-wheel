@@ -14,7 +14,7 @@ function isLowContent(excerpt) {
 async function fetchExcerpt(url) {
   try {
     const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; racing-news/1.0)" },
     });
     const html = await res.text();
     const dom = new JSDOM(html, { url });

@@ -4,7 +4,7 @@
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 
-const DEFAULT_UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
+const DEFAULT_UA = "Mozilla/5.0 (compatible; racing-news/1.0)";
 
 // Drops "label" headlines like "QUALIFYING: …", "GALLERY: …", "TEAM RADIO: …".
 // Requires 4+ characters before the colon so real prefixes like "F1:", "F2:",

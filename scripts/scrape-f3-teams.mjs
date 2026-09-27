@@ -7,7 +7,7 @@ const STANDINGS_URL = `https://www.fiaformula3.com/en/standings/${YEAR}/teams`;
 async function scrapeF3Teams() {
   try {
     const res = await fetch(STANDINGS_URL, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; racing-news/1.0)" },
     });
     const html = await res.text();
     const doc = new JSDOM(html).window.document;

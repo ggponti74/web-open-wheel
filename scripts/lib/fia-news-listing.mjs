@@ -9,7 +9,7 @@
 import { JSDOM } from "jsdom";
 import { isLabelledTitle } from "./news-excerpt.mjs";
 
-const DEFAULT_UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
+const DEFAULT_UA = "Mozilla/5.0 (compatible; racing-news/1.0)";
 
 function extractArticleLinks(html, baseUrl) {
   const doc = new JSDOM(html, { url: baseUrl }).window.document;

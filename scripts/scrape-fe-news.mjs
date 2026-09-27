@@ -9,7 +9,7 @@ const BASE_URL = "https://www.fiaformulae.com";
 const LISTING_URL = `${BASE_URL}/en/news`;
 const MAX_ITEMS = 25;
 const MAX_PAGES = 3; // ~12 items/page — enough to comfortably reach MAX_ITEMS
-const UA = "Mozilla/5.0 (compatible; web-open-wheel/1.0)";
+const UA = "Mozilla/5.0 (compatible; racing-news/1.0)";
 
 // Article links look like /en/news/<category>/<slug> (two segments after
 // /news/). Bare category pages (/en/news/drivers) and the category-filter

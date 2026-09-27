@@ -1,3 +1,3 @@
-<https://ggponti74.github.io/web-open-wheel/>
+<https://ggponti74.github.io/racing-news/>
 
 Made with Claude

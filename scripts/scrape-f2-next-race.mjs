@@ -114,7 +114,7 @@ function nextDateForWeekday(weekdayName, timeZone) {
 async function scrapeF2Schedule() {
   try {
     const res = await fetch(HOME_URL, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; web-open-wheel/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; racing-news/1.0)" },
     });
     const html = await res.text();
     const doc = new JSDOM(html).window.document;

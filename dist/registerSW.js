@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/web-open-wheel/sw.js', { scope: '/web-open-wheel/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/racing-news/sw.js', { scope: '/racing-news/' })})}
