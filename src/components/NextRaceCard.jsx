@@ -16,13 +16,15 @@ export function NextRaceCard({ race }) {
     return <p class="status-text">No races left in the current season.</p>;
   }
 
-  const country = race.country || guessCountry(race.location);
+  const country = race.country || guessCountry(race.city);
   const flagUrl = country && getFlagUrl(country);
 
-  const sessionMatch = race.name?.match(SESSION_SUFFIX_RE);
-  const heading = sessionMatch ? race.name.slice(0, sessionMatch.index) : race.name;
+  const sessionMatch = race.raceName?.match(SESSION_SUFFIX_RE);
+  const heading = sessionMatch ? race.raceName.slice(0, sessionMatch.index) : race.raceName;
   const sessionLabel = sessionMatch?.[1] ?? null;
   const isSprint = /sprint/i.test(sessionLabel ?? "");
+
+  const locationLine = [race.city, country].filter(Boolean).join(", ");
 
   return (
     <div class="next-race-card">
@@ -38,8 +40,8 @@ export function NextRaceCard({ race }) {
         </p>
       )}
       {race.circuit && <p>{race.circuit}</p>}
-      {race.location && <p>{race.location}</p>}
-      {race.dateTime && <p>{new Date(race.dateTime).toLocaleString()}</p>}
+      {locationLine && <p>{locationLine}</p>}
+      {race.date && <p>{new Date(race.date).toLocaleDateString()}</p>}
       {race.city && country && <VenueMap city={race.city} country={country} />}
     </div>
   );
