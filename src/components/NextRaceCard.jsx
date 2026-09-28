@@ -29,11 +29,23 @@ export function NextRaceCard({ race }) {
 
   const placeLine = [race.city, country].filter(Boolean).join(", ");
   const when = race.dateTime ?? race.date;
+  const locationLine = [race.city, country].filter(Boolean).join(", ");
 
   return (
     <div class="next-race-card">
+      <h2>
+        {flagUrl && <img src={flagUrl} alt={country} width="24" height="18" />}{" "}
+        {heading}
+      </h2>
+      {sessionLabel && (
+        <p
+          class={`next-race-session${isSprint ? " next-race-session--sprint" : ""}`}
+        >
+          {sessionLabel}
+        </p>
+      )}
       {race.circuit && race.circuit !== race.city && <p>{race.circuit}</p>}
-      {placeLine && <p>{placeLine}</p>}
+      {locationLine && <p>{locationLine}</p>}
       {when && (
         <p>
           {race.dateTime
@@ -41,7 +53,7 @@ export function NextRaceCard({ race }) {
             : new Date(when).toLocaleDateString(undefined, { timeZone: "UTC" })}
         </p>
       )}
-      <VenueMap city={race.city} country={country} />
+      {race.city && country && <VenueMap city={race.city} country={country} />}
     </div>
   );
-}
+}or
