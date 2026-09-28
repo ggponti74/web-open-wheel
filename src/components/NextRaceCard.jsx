@@ -16,33 +16,32 @@ export function NextRaceCard({ race }) {
     return <p class="status-text">No races left in the current season.</p>;
   }
 
-  const country = race.country || guessCountry(race.city);
+  const country = race.country || guessCountry(race.location ?? race.city);
   const flagUrl = country && getFlagUrl(country);
 
-  const sessionMatch = race.raceName?.match(SESSION_SUFFIX_RE);
-  const heading = sessionMatch ? race.raceName.slice(0, sessionMatch.index) : race.raceName;
+  const fullName = race.raceName ?? race.name;
+  const sessionMatch = fullName?.match(SESSION_SUFFIX_RE);
+  const heading = sessionMatch
+    ? fullName.slice(0, sessionMatch.index).trim()
+    : fullName;
   const sessionLabel = sessionMatch?.[1] ?? null;
   const isSprint = /sprint/i.test(sessionLabel ?? "");
 
-  const locationLine = [race.city, country].filter(Boolean).join(", ");
+  const placeLine = [race.city, country].filter(Boolean).join(", ");
+  const when = race.dateTime ?? race.date;
 
   return (
     <div class="next-race-card">
-      <h2>
-        {flagUrl && <img src={flagUrl} alt={country} width="24" height="18" />}{" "}
-        {heading}
-      </h2>
-      {sessionLabel && (
-        <p
-          class={`next-race-session${isSprint ? " next-race-session--sprint" : ""}`}
-        >
-          {sessionLabel}
+      {race.circuit && race.circuit !== race.city && <p>{race.circuit}</p>}
+      {placeLine && <p>{placeLine}</p>}
+      {when && (
+        <p>
+          {race.dateTime
+            ? new Date(when).toLocaleString()
+            : new Date(when).toLocaleDateString(undefined, { timeZone: "UTC" })}
         </p>
       )}
-      {race.circuit && <p>{race.circuit}</p>}
-      {locationLine && <p>{locationLine}</p>}
-      {race.date && <p>{new Date(race.date).toLocaleDateString()}</p>}
-      {race.city && country && <VenueMap city={race.city} country={country} />}
+      <VenueMap city={race.city} country={country} />
     </div>
   );
 }
