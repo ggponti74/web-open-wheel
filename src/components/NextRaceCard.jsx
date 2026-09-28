@@ -56,4 +56,4 @@ export function NextRaceCard({ race }) {
       {race.city && country && <VenueMap city={race.city} country={country} />}
     </div>
   );
-}or
+}
