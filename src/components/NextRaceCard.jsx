@@ -19,8 +19,7 @@ export function NextRaceCard({ race }) {
   const country = race.country || guessCountry(race.location ?? race.city);
   const flagUrl = country && getFlagUrl(country);
 
-  const fullName = race.raceName ?? (race.country + " " + race.name);
-  const sessionMatch = fullName?.match(SESSION_SUFFIX_RE);
+  const fullName = race.raceName ?? [country, race.name].filter(Boolean).join(" ");  const sessionMatch = fullName?.match(SESSION_SUFFIX_RE);
   const heading = sessionMatch
     ? fullName.slice(0, sessionMatch.index).trim()
     : fullName;
